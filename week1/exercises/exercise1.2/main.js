@@ -20,9 +20,9 @@ function draw() {
 
 }
 
-const age = window.prompt("How old are you?");
-if (age === "21") {
-    console.log("old enough");
+const age = window.prompt("What's your favorite color?");
+if (age === "red") {
+    console.log("correct");
 } else {
-    console.log("nope");
+    console.log("incorrect");
 }
