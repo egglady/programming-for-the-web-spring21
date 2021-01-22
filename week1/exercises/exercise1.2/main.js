@@ -20,3 +20,9 @@ function draw() {
 
 }
 
+const age = window.prompt("How old are you?");
+if (age === "21") {
+    console.log("old enough");
+} else {
+    console.log("nope");
+}
