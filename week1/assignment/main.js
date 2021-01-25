@@ -36,5 +36,12 @@ function draw () {
     fill(255, 205, 20);
     strokeWeight(2);
     rect(800, 399, 300, 200);
+    // roof
+    fill(150, 95, 20);
     triangle(770, 399, 950, 250, 1130, 399);
+    // house door
+    fill(10, 10, 225);
+    rect(890, 499, 70, 100);
+    fill(255)
+    rect(905, 515, 40, 30);
 }
