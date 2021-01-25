@@ -1,4 +1,6 @@
 let grid = undefined; 
+let fill1 = prompt("enter a basic color name for your snowman's bowtie", "red");
+
 function setup ()  {
     createCanvas(windowWidth, windowHeight);
     background(200);
@@ -16,7 +18,7 @@ function draw () {
     line(587, 201, 635, 300);
     line(635, 300, 552, 362);
     // bowtie
-    fill(255, 65, 0);
+    fill(fill1);
     triangle(500, 160, 550, 140, 550, 175);
     triangle(500, 160, 450, 140, 450, 175);
     // eyes
