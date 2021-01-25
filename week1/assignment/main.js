@@ -7,6 +7,9 @@ function setup ()  {
 }
 
 function draw () {
+    // street
+    line(1, 600, 2000, 600);
+    line(1, 675, 2000, 675);
     // snowman body
     fill(255);
     strokeWeight(4);
@@ -29,4 +32,9 @@ function draw () {
     noFill();
     strokeWeight(3);
     arc(500, 110, 30, 30, TWO_PI, PI);
+    // home
+    fill(255, 205, 20);
+    strokeWeight(2);
+    rect(800, 399, 300, 200);
+    triangle(770, 399, 950, 250, 1130, 399);
 }
