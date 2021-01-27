@@ -10,4 +10,4 @@ const myMovies = [
 console.log(myMovies);
 
 myMovies.push(newmovie);
-console.log(myMovies);
+console.log(myMovies.toString());
