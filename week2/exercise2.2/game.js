@@ -11,5 +11,5 @@ const myGames = [
 console.log('title', myGames[0].title);
 
 window.alert(
-    'You selected ' + myGames[game - 1].title + ' which is a ' + myGames[game - 1].type + ' and played with up to ' + myGames[game - 1].numberOfPlayers + ' players. People often describe this game as a ' + myGames[game - 1].shortDescription + '.'
+    'You selected ' + myGames[game - 1].title + ' which is a ' + myGames[game - 1].type + ' and played with up to ' + myGames[game - 1].numberOfPlayers + ' players. People often describe this game as a ' + myGames[game - 1].shortDescription + '. I rate this game ' + myGames[game - 1].rating + ' out of 10.'
     );
