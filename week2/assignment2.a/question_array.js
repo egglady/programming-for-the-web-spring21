@@ -17,4 +17,4 @@ console.log(myQuiz[randomIdx].question);
 const randomAnswer = prompt(myQuiz[randomIdx].question);
 
 // alert
-window.alert ('You answered ' + randomAnswer);
+window.alert ('You answered ' + randomAnswer + '. The correct answer is ' + myQuiz[randomIdx].answer + '.');
