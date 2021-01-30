@@ -1,3 +1,5 @@
+
+// array
 const myQuiz = [
     {question: 'What color do you get from mixing red and blue? Reply with  common color name.', answer: 'purple'},
     {question: 'What color do you get from mixing red and yellow? Reply with  common color name.', answer: 'orange'},
@@ -8,7 +10,11 @@ const myQuiz = [
 
 console.log(myQuiz);
 
+// random question
 const randomIdx = Math.round(Math.random() * (myQuiz.length - 1));
 console.log(myQuiz[randomIdx].question);
 
-const random = prompt(myQuiz[randomIdx].question);
+const randomAnswer = prompt(myQuiz[randomIdx].question);
+
+// alert
+window.alert ('You answered ' + randomAnswer);
