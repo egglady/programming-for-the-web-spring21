@@ -82,7 +82,6 @@ function createTile(originX, originY, darkGreenSquareX, darkGreenSquareSize, tri
   stroke('white');
   strokeWeight(2);
   circle(100, 100, 150);
-  // rect(40, 30, 120, 140); how would I parameterize this??
 }
 
 // call the function
