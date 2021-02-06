@@ -20,12 +20,22 @@ function next () {
   return myQuiz[randomIdx];
 }
 function checkQuestion() {
-  if (currentQuestion.answer === input.value()) {
+  if (currentQuestion.answer === questionInput.value()) {
     // remove correct answer from array, you could also splice it out
     myQuiz = myQuiz.filter(myQuizObj => {
       return currentQuestion.answer !== myQuizObj.answer;
     });
+    // this is the correct answer condition
+    response = 'correct! next question';
+    responseColor = 'green'
+  } else {
+    // this is the wrong answer condition
+    response = 'oops, that wasn\'t quite right! Try another';
+    responseColor = 'red';
   }
+  currentQuestion = next();
+  questionInput.value('');
+  message = currentQuestion.question;
 }
 
 currentQuestion = next();
@@ -33,21 +43,23 @@ let message = currentQuestion.question;
 // console.log(next());
 
 function setup() {
-  createCanvas(1200, 1000);
-  background('lightblue');
+  createCanvas(1400, 1000);
   heading = createElement('h1', ['Color Quiz']);
   heading.position(100, 100);
   questionInput = createInput('');
   questionInput.size(250, 20);
   questionInput.position(100, 325);
   submitAnswerButton = createButton('submit answer');
-  submitAnswerButton.size(250, 24);
+  submitAnswerButton.size(250, 20);
+  submitAnswerButton.mousePressed(checkQuestion);
   submitAnswerButton.position(100, 350);
 }
 
 function draw() {
+  background('lightblue');
   fill('purple');
-  textSize(24);
+  textSize(20);
   text(message, 100, 300);
+  fill(responseColor);
+  text(response, 100, 400);
 }
-
