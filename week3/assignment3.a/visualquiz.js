@@ -35,7 +35,9 @@ function checkQuestion() {
   }
   currentQuestion = next();
   questionInput.value('');
-  message = currentQuestion.question;
+  if (currentQuestion) {
+    message = currentQuestion.question;
+  }
 }
 
 currentQuestion = next();
@@ -44,7 +46,7 @@ let message = currentQuestion.question;
 
 function setup() {
   createCanvas(1400, 1000);
-  heading = createElement('h1', ['Color Quiz']);
+  heading = createElement('h1', ['Eggcellent Questions']);
   heading.position(100, 100);
   questionInput = createInput('');
   questionInput.size(250, 20);

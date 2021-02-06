@@ -90,6 +90,7 @@ function createTile(originX, originY, darkGreenSquareX, darkGreenSquareSize, tri
     7   8   9 */
 
 function draw() {
+  noLoop();
   // 1
   createTile(0, 0, 105, 90, 0);
   // 2
