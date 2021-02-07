@@ -3,6 +3,7 @@ let questionInput;
 let currentQuestion;
 let response;
 let responseColor = 'green';
+let wrongResponse = Number(0);
 let heading;
 let myQuiz = [
   { question: 'What kind of eggs are boiled in their shell until the yolk is solid?', answer: 'hard boiled'},
@@ -14,6 +15,13 @@ let myQuiz = [
 function next () {
   if(myQuiz.length < 1) {
     window.alert('you won');
+    location.reload();
+    return;
+  }
+
+  if (wrongResponse > 4) {
+    window.alert('you lost');
+    location.reload();
     return;
   }
   const randomIdx = Math.ceil(Math.random() * myQuiz.length - 1);
@@ -32,12 +40,19 @@ function checkQuestion() {
     // this is the wrong answer condition
     response = 'oops, that wasn\'t quite right! Try another';
     responseColor = 'red';
+    wrongResponse++;
   }
   currentQuestion = next();
   questionInput.value('');
   if (currentQuestion) {
     message = currentQuestion.question;
   }
+}
+
+// start quiz over
+function startOver() {
+  location.reload();
+  return;
 }
 
 currentQuestion = next();
@@ -51,15 +66,15 @@ function setup() {
   questionInput = createInput('');
   questionInput.size(250, 20);
   questionInput.position(100, 325);
-  submitAnswerButton = createButton('submit answer');
+  submitAnswerButton = createButton('Submit');
   submitAnswerButton.size(250, 20);
   submitAnswerButton.mousePressed(checkQuestion);
   submitAnswerButton.position(100, 350);
 }
 
 function draw() {
-  background('lightblue');
-  fill('purple');
+  background('#F5C95D');
+  fill('white');
   textSize(20);
   text(message, 100, 300);
   fill(responseColor);
