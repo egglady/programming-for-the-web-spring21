@@ -7,17 +7,13 @@ function createTile(originX, originY, darkGreenSquareX, darkGreenSquareSize, tri
   // square background
   noStroke();
   fill(40, 250, 130, 160);
-
-  // 40, 250, 130
   square(0, 0, 200);
+
   // checker squares
-
   noStroke();
-
   fill(220, 255, 195, 220);
   square(5, 5, 90);
   square(105, 105, 90);
-
   fill(26, 89, 53);
   square(darkGreenSquareX, 5, darkGreenSquareSize);
   square(5, 105, 90);

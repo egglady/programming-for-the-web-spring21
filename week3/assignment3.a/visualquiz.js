@@ -13,7 +13,7 @@ let myQuiz = [
 ];
 function next () {
   if(myQuiz.length < 1) {
-    alert('you won');
+    window.alert('you won');
     return;
   }
   const randomIdx = Math.ceil(Math.random() * myQuiz.length - 1);
