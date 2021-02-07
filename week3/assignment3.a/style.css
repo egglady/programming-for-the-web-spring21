@@ -1,3 +1,21 @@
+:root {
+ --red: #D94410;
+
+}
+
 h1 {
-    color: #D94410;
+    color: var(--red);
+}
+
+button {
+    border: 2mm ridge rgba(219, 59, 10, 0.70);
+    border-radius: 10px 10px;
+    background: #FFEFBA;
+    color: #333;
+}
+
+input {
+    background: #FFEFBA;
+    border: 3mm ridge rgba(219, 59, 10, 0.8);
+    border-radius: 10px 10px;
 }
