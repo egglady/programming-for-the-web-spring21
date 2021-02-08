@@ -77,7 +77,7 @@ function setup() {
   startOverButton = createButton('Start Over');
   startOverButton.size(200, 40);
   startOverButton.mousePressed(startOver);
-  startOverButton.position(100, 500);
+  startOverButton.position(100, 520);
 }
 
 function draw () {
@@ -88,8 +88,8 @@ function draw () {
   text(message, 100, 200);
   textSize(22);
   fill(responseColor);
-  text(response, 100, 385);
-  text(rightResponse + ' correct answers', 100, 560);
+  text(response, 100, 400);
+  text(rightResponse + ' correct answers', 100, 575);
 
   // egg
   // yolk
