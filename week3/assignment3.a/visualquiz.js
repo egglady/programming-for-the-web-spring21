@@ -63,28 +63,44 @@ let message = currentQuestion.question;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  textFont('Padauk');
   heading = createElement('h1', ['Eggcellent Questions']);
   heading.position(100, 100);
   questionInput = createInput('');
   questionInput.size(250, 60);
   questionInput.position(100, 250);
   submitAnswerButton = createButton('Submit');
-  submitAnswerButton.size(200, 40);
+  submitAnswerButton.size(250, 40);
   submitAnswerButton.mousePressed(checkQuestion);
   submitAnswerButton.position(100, 325);
   startOverButton = createButton('Start Over');
   startOverButton.size(200, 40);
   startOverButton.mousePressed(startOver);
-  startOverButton.position(100, 450);
+  startOverButton.position(100, 500);
 }
 
 function draw() {
   background('#F5C95D');
   fill('white');
-  textSize(22);
+  noStroke();
+  textSize(24);
   text(message, 100, 220);
-  textSize(18);
+  textSize(22);
   fill(responseColor);
-  text(response, 100, 375);
-  text(rightResponse + ' correct answers', 100, 510);
+  text(response, 100, 385);
+  text(rightResponse + ' correct answers', 100, 560);
+
+  // egg
+  // yolk
+  noStroke();
+  fill(232, 100, 11, 150);
+  ellipse(790, 240, 120, 125);
+  // shape
+  strokeWeight(4);
+  stroke(232, 100, 11, 80);
+  fill(250, 250, 200, 150);
+  beginShape();
+  bezier(990, 370, 950, 420, 610, 370, 700, 200, 720, 175);
+  bezier(990, 370, 1030, 310, 820, 20, 700, 200, 750, 240);
+  endShape();
 }

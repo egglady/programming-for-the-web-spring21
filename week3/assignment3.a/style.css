@@ -1,17 +1,21 @@
 :root {
  --red: #D94410;
-
+ --blue: #0965CF;
 }
 
 h1 {
     color: var(--red);
+    font-family: 'Fredoka One', sans-serif;
+    font-size: 2.75rem;
 }
 
 button {
     border: 2mm ridge rgba(219, 59, 10, 0.70);
     border-radius: 10px 10px;
     background: #FFEFBA;
-    color: #333;
+    color: var(--blue);
+    font-weight: bold;
+    font-size: .9rem; 
 }
 
 input {
