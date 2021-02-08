@@ -1,4 +1,5 @@
-let submitAnswerButton
+let submitAnswerButton;
+let startOverButton;
 let questionInput;
 let currentQuestion;
 let response;
@@ -14,7 +15,7 @@ let myQuiz = [
   { question: 'What kind of eggs are beaten, then cooked in a skillet with butter (and often milk, salt, and pepper)?', answer: 'scrambled' }
 ];
 function next () {
-  if(myQuiz.length < 1) {
+  if (myQuiz.length < 1) {
     window.alert('You cracked it!');
     location.reload();
     return;
@@ -52,7 +53,7 @@ function checkQuestion() {
 }
 
 // start quiz over
-function startOver() {
+function startOver () {
   location.reload();
   return;
 }
@@ -65,26 +66,26 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   textFont('Padauk');
   heading = createElement('h1', ['Eggcellent Questions']);
-  heading.position(100, 100);
+  heading.position(100, 80);
   questionInput = createInput('');
-  questionInput.size(250, 60);
+  questionInput.size(280, 75);
   questionInput.position(100, 250);
   submitAnswerButton = createButton('Submit');
-  submitAnswerButton.size(250, 40);
+  submitAnswerButton.size(280, 40);
   submitAnswerButton.mousePressed(checkQuestion);
-  submitAnswerButton.position(100, 325);
+  submitAnswerButton.position(100, 340);
   startOverButton = createButton('Start Over');
   startOverButton.size(200, 40);
   startOverButton.mousePressed(startOver);
   startOverButton.position(100, 500);
 }
 
-function draw() {
+function draw () {
   background('#F5C95D');
   fill('white');
   noStroke();
-  textSize(24);
-  text(message, 100, 220);
+  textSize(25);
+  text(message, 100, 200);
   textSize(22);
   fill(responseColor);
   text(response, 100, 385);
@@ -93,14 +94,14 @@ function draw() {
   // egg
   // yolk
   noStroke();
-  fill(232, 100, 11, 150);
-  ellipse(790, 240, 120, 125);
+  fill(232, 100, 11, 200);
+  ellipse(855, 375, 145, 150);
   // shape
   strokeWeight(4);
-  stroke(232, 100, 11, 80);
+  stroke(232, 100, 11, 120);
   fill(250, 250, 200, 150);
   beginShape();
-  bezier(990, 370, 950, 420, 610, 370, 700, 200, 720, 175);
-  bezier(990, 370, 1030, 310, 820, 20, 700, 200, 750, 240);
+  bezier(1040, 520, 1000, 570, 660, 550, 750, 350, 790, 355);
+  bezier(1040, 520, 1080, 420, 870, 80, 750, 350, 800, 390);
   endShape();
 }
