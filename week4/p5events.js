@@ -1,19 +1,22 @@
-let circleX = 40;
+// let circleX = 40;
 let circleY = 0;
-
+let circleX;
 let circleWidth = 80;
 let circleHeight = 80;
 let clickCount = 0;
-// let speed;
+let speed;
 
 function setup() {
   createCanvas(500, 500);
+  circleX = random(width - circleWidth);
+  speed = random(1, 4);
 }
 
 function draw() {
   background('#0737a8');
   drawShape();
   circleY++;
+  circleY += speed;
   if(circleY > height) {
     noLoop();
     text('BADABING! that\'s ' + clickCount, 200, 250); 
@@ -21,7 +24,7 @@ function draw() {
 }
 
 function mousePressed() {
-  if((mouseX >= 40 && mouseX <= 80) && (mouseY >= circleY && mouseY <= circleY + circleHeight)) {
+  if((mouseX >= circleX && mouseX <= circleX + circleWidth) && (mouseY >= circleY && mouseY <= circleY + circleHeight)) {
     clickCount++;
     console.log('hit', clickCount);
   }
@@ -30,5 +33,5 @@ function mousePressed() {
 function drawShape() {
   fill('#6b97ff');
   noStroke();
-  ellipse(40, circleY, 80, circleHeight);
+  ellipse(circleX, circleY, circleWidth, circleHeight);
 }
