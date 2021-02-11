@@ -1,8 +1,9 @@
-// let circleX;
-// let circleY;
-// let circleWidth;
-// let circleHeight;
-// let clickCount;
+let circleX = 40;
+let circleY = 0;
+
+let circleWidth = 80;
+let circleHeight = 80;
+let clickCount = 0;
 // let speed;
 
 function setup() {
@@ -12,16 +13,22 @@ function setup() {
 function draw() {
   background('#0737a8');
   drawShape();
+  circleY++;
+  if(circleY > height) {
+    noLoop();
+    text('BADABING! that\'s ' + clickCount, 200, 250); 
+  }
 }
 
 function mousePressed() {
-  if((mouseX >= 0 && mouseX <= 60) && (mouseY >= 0 && mouseY <= 60)) {
-    console.log('hit');
+  if((mouseX >= 40 && mouseX <= 80) && (mouseY >= circleY && mouseY <= circleY + circleHeight)) {
+    clickCount++;
+    console.log('hit', clickCount);
   }
 }
 
 function drawShape() {
   fill('#6b97ff');
   noStroke();
-  ellipse(30, 30, 60, 60);
+  ellipse(40, circleY, 80, circleHeight);
 }
