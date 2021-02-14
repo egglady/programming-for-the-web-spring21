@@ -5,6 +5,7 @@ let myCards = [];
 let startingX = 100;
 let startingY = 100;
 let startingId = 0;
+let clickCount = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -22,14 +23,23 @@ function setup() {
   console.log(myCards);
 }
 
+function draw () {
+    if(startingId > 0) {
+        noLoop();
+        fill(200);
+        textSize(20);
+        text('Tally: ' + clickCount, 1200, 600);
+    }
+}
+
 function mousePressed() {
   for (let j = 0; j < myCards.length; j++) {
       let distance = dist(mouseX, mouseY, myCards[j].x, myCards[j].y);
-      if (distance < rectWidth - 30 && rectHeight - 30) {
+      if (distance < rectWidth - 30) {
+        clickCount++;
         console.log('card has been clicked', myCards[j].id);
     }
   }
 }
-
 
 // target zone of where the mouse presses to the rect
