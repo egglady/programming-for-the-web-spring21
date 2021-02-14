@@ -1,15 +1,15 @@
 function setup() {
     createCanvas(150, 250);
-    background('#ad092a');
+    background(27, 73, 148);
 
 }
 
 function draw() {
-    fill('#db2a07');
-     rect(5, 5, 140, 240);
-     stroke('#f7a394');
-     strokeWeight(2);
+    stroke('#f7a394');
+    fill(219, 42, 7, 255);
+    rect(5, 5, 140, 240);
 
+    strokeWeight(3);
     // triangle 1
     triangle(75, 125, 25, 5, 50, 5);
     // triangle 2
@@ -32,5 +32,12 @@ function draw() {
 
     // middle line
     line(5, 125, 145, 125);
+
+    strokeWeight(2);
+    fill(27, 73, 148, 200);
+    ellipse(40, 100, 18, 18);
+    ellipse(40, 150, 18, 18);
+    ellipse(110, 100, 18, 18)
+    ellipse(110, 150, 18, 18);
 
 }
