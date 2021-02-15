@@ -1,4 +1,3 @@
-// const circleDiameter = 100;
 const rectWidth = 120;
 const rectHeight = 220;
 let myCards = [];
