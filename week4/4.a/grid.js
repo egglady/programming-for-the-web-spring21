@@ -23,14 +23,6 @@ function setup() {
   console.log(myCards);
 }
 
-function draw () {
-    if(startingId > 0) {
-        noLoop();
-        fill(200);
-        textSize(20);
-        text('Tally: ' + clickCount, 1200, 600);
-    }
-}
 
 function mousePressed() {
   for (let j = 0; j < myCards.length; j++) {
@@ -40,6 +32,15 @@ function mousePressed() {
         console.log('card has been clicked', myCards[j].id);
     }
   }
+}
+
+function draw () {
+    if(startingId > 0) {
+        noLoop();
+        fill(200);
+        textSize(20);
+        text('Tally: ' + clickCount, 1200, 600);
+    }
 }
 
 // target zone of where the mouse presses to the rect
