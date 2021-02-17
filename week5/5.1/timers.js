@@ -15,6 +15,10 @@ function drawSquare(x, y, color) {
     rect(x, y, 50, 50);
 }
 
+function keyPressed() {
+    console.log('You pressed', keyCode);
+}
+
 drawTimer = window.setInterval(() => {
     if (squareX - 50 <= width) {
         drawSquare(squareX, squareY, squareColor);
