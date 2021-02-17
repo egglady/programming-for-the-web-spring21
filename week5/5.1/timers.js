@@ -7,16 +7,20 @@ const distance = 2;
 
 function setup() {
     createCanvas(600, 600);
-    background(0);
+    background(7, 55, 168);
 }
 
 function drawSquare(x, y, color) {
-    fill(color || 255);
+    fill(130, 180, 255);
     rect(x, y, 50, 50);
 }
 
 function keyPressed() {
+    let keyToColor;
+    keyToColor = map(keyToColor, 1, 9, 1, 255);
     console.log('You pressed', keyCode);
+    squareColor = keyToColor;
+
 }
 
 drawTimer = window.setInterval(() => {
