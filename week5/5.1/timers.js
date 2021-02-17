@@ -11,16 +11,22 @@ function setup() {
 }
 
 function drawSquare(x, y, color) {
-    fill(130, 180, 255);
+    fill(color || 255);
+    // goal color (130, 180, 255)
     rect(x, y, 50, 50);
 }
 
-function keyPressed() {
-    let keyToColor;
-    keyToColor = map(keyToColor, 1, 9, 1, 255);
-    console.log('You pressed', keyCode);
-    squareColor = keyToColor;
-
+function keyTyped() {
+    let keyToNumber = Number(key);
+    if (isNaN(keyToNumber)) {
+        return;
+    }
+    // var r = map(1, 9, 1, 255);
+    // var g = map(1, 9, 1, 255);
+    // var b = map(1, 9, 1, 255);
+    keyToNumber = map(keyToNumber, 1, 9, 1, 255);
+    console.log('You pressed', keyToNumber);
+    squareColor = keyToNumber;
 }
 
 drawTimer = window.setInterval(() => {
