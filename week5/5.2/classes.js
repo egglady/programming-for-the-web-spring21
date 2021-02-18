@@ -14,17 +14,17 @@ function draw() {
 
 class Quad {
     constructor () {
-        this.x = 20;
-        this.y = 20;
+        // this.x = 50;
+        this.y = 80;
     }
     move() {
-        this.x = this.x + random(-5, 5);
-        this.x = this.y + random(-5, 5);
+        // this.x = this.x + random(-5, 5);
+        this.y = this.y + random(-5, 5);
     }
     show() {
         stroke(200);
         strokeWeight(2);
         fill(255);
-        quad(this.x, this.y, 50, 20, 55, 50, 15, 50);
+        quad(50, 50, 80, 50, 85, this.y, 45, this.y);
 }
 }
