@@ -1,20 +1,26 @@
-let quad1;
+let rect1;
 
 function setup() {
     createCanvas(600, 600);
-    quad1 = new Quad();
-    print(quad1.x, quad1.y);
+    rect1 = new Rect();
+    // console.log(quad1.x, quad1.y);
 }
 
 function draw() {
     background(0);
-    quad1.move();
-    quad1.show();
+    for (i = 0; i < 2; i++) {
+        rect1.move();
+        rect1.show();
+    }
+    // for (i = 0; i < 5; i++) {
+    //     //console.log(i)
+    //     startingX += 150;
+    // }
 }
 
-class Quad {
+class Rect {
     constructor () {
-        // this.x = 50;
+        this.x = 50;
         this.y = 80;
     }
     move() {
@@ -25,6 +31,6 @@ class Quad {
         stroke(200);
         strokeWeight(2);
         fill(255);
-        quad(50, 50, 80, 50, 85, this.y, 45, this.y);
-}
+        rect(50, this.y, 100, 100);
+    }
 }
