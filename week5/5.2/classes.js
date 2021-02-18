@@ -1,13 +1,13 @@
 let rect1;
 let rect2;
-let startingX = 100;
-let startingY = 120;
-let rects = [];
+// let startingX = 100;
+// let startingY = 120;
+// let rects = [];
 
 function setup() {
     createCanvas(600, 600);
     rect1 = new Rect();
-    rect2 = new Rect(startingX, startingY);
+    rect2 = new Rect(); // (startingX, startingY)??
 }
 
 function draw() {
@@ -18,8 +18,8 @@ function draw() {
         rect1.show();
         rect2.move();
         rect2.show();
-        rects.push(new Rect(startingX, startingY));
-        startingX += 150;
+        // rects.push(new Rect(startingX, startingY));
+        // startingX += 150;
     }
 }
 
