@@ -1,25 +1,30 @@
 let rect1;
+let rect2;
+let startingX = 100;
+let startingY = 120;
+let rects = [];
 
 function setup() {
     createCanvas(600, 600);
     rect1 = new Rect();
-    // console.log(quad1.x, quad1.y);
+    rect2 = new Rect(startingX, startingY);
 }
 
 function draw() {
     background(0);
-    for (i = 0; i < 2; i++) {
+    for (i = 0; i < 3; i++) {
+        // console.log([i]);
         rect1.move();
         rect1.show();
+        rect2.move();
+        rect2.show();
+        rects.push(new Rect(startingX, startingY));
+        startingX += 150;
     }
-    // for (i = 0; i < 5; i++) {
-    //     //console.log(i)
-    //     startingX += 150;
-    // }
 }
 
 class Rect {
-    constructor () {
+    constructor (x, y) {
         this.x = 50;
         this.y = 80;
     }
