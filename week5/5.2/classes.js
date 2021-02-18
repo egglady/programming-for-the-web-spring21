@@ -12,7 +12,7 @@ function setup() {
 
 function draw() {
     background(0);
-    for (i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
         // console.log([i]);
         rect1.move();
         rect1.show();
