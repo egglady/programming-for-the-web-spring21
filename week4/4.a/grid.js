@@ -40,5 +40,3 @@ function draw () {
       text('Tally: ' + clickCount, 1200, 600);
   }
 }
-
-// click count and tally not working correctly yet
