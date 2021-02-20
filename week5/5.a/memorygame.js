@@ -10,6 +10,15 @@ let startingY = 100;
 let cardback;
 let cardfaceArray = [];
 
+// const gameState = {
+//   totalPairs: 8,
+//   flippedCards: [],
+//   numMatched: 0,
+//   attempts: 0,
+//   waiting: false
+
+// };
+
 
 function preload() {
   cardback = loadImage('images/cardback.png');
@@ -25,26 +34,25 @@ function preload() {
     ] 
 }
 
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(0);
  // myCard = new Card();
-  let selectedFaces = [];
+  let flippedFaces = [];
   for (let a = 0; a < 8; a++) {
     const randomIdx = floor(random(cardfaceArray.length));
     const face = cardfaceArray[randomIdx];
     // each card appears twice in the grid, 16 total
-    selectedFaces.push(face);
-    selectedFaces.push(face);
+    flippedFaces.push(face);
+    flippedFaces.push(face);
     // remove cardface
     cardfaceArray.splice(randomIdx, 1);
   }
-  selectedFaces = shuffleArray(selectedFaces);
+  flippedFaces = shuffleArray(flippedFaces);
   for (let b = 0; b < 2; b++) { // 2 rows
     for (let c = 0; c < 8; c++) { // 8 cards each
-      const faceImage = selectedFaces.pop();
-      cards.push(new Card(startingX, startingY, faceImage));
+      const cardfaceImage = flippedFaces.pop();
+      cards.push(new Card(startingX, startingY, cardfaceImage));
         startingX += 140;
         }
         startingY += 250;
@@ -70,21 +78,22 @@ function mousePressed() {
 // }
 
 class Card {
-  constructor (x, y, cardFaceImage) {
+  constructor (x, y, cardfaceImage) {
     this.x = x;
     this.y = y;
     this.width = 120;
     this.height = 220;
     this.face = DOWN;
-    this.cardFaceImage = cardFaceImage;
+    this.cardFaceImage = cardfaceImage;
     this.show();
   }
   show () {
     if (this.face === DOWN) {
-      // fill(200, 200, 200);
+      // the cardback
       rect(this.x, this.y, this.width, this.height, 5);
       image(cardback, this.x, this. y);
     } else {
+      // the blue background and the cheese image
       fill(27, 73, 148);
       rect(this.x, this.y, this.width, this.height, 5);
       image(this.cardFaceImage, this.x, this.y);
@@ -126,46 +135,16 @@ function shuffleArray (array) {
   return array;
 }
 
-// Grid from 4.a
-// const rectWidth = 120;
-// const rectHeight = 220;
-// let myCards = [];
-// let startingX = 100;
-// let startingY = 100;
-// let startingId = 0;
-// let clickCount = 0;
+// naming key:
+// cardback - the back of the card that I designed
+// cardfaceArray - the array where all my images of cheeses are loaded, to be spliced out when matched
+// cards []
+// face
+// flippedFaces - the cards someone clicked on to see if they’re a match
+// cardfaceImage - the cheese picture on the card face
 
-// function setup() {
-//   createCanvas(windowWidth, windowHeight);
-//   background(0);
-//   for (let k = 0; k < 2; k++) {
-//     for (let i = 0; i < 8; i++) {
-//       rect(startingX, startingY, rectWidth, rectHeight);
-//         myCards.push({ x: startingX, y: startingY, id: startingId }); // pushes these objects into our array, id: i is the loop variable
-//         startingX += 150;
-//         startingId++;
-//     }
-//     startingY += 250;
-//     startingX = 100;
-//   }
-//   console.log(myCards);
-// }
-
-// function mousePressed() {
-//   for (let j = 0; j < myCards.length; j++) {
-//       let distance = dist(mouseX, mouseY, myCards[j].x, myCards[j].y);
-//       if (distance < rectWidth - 30) {
-//         clickCount++;
-//         console.log('card has been clicked', myCards[j].id);
-//     }
-//   }
-// }
-
-// function draw () {
-//   if(startingId > 0) {
-//       noLoop();
-//       fill(200);
-//       textSize(20);
-//       text('Tally: ' + clickCount, 1200, 600);
-//   }
-// }
+// naming for Loops:
+// a
+// b
+// c
+// d
