@@ -1,10 +1,14 @@
-let myCard;
+// let myCard;
 
 const DOWN = 'down';
 const UP = 'up';
 
+let cards = [];
+let startingX = 120;
+let startingY = 100;
+
 let cardback;
-let cardfaceArray;
+let cardfaceArray = [];
 
 
 function preload() {
@@ -25,11 +29,36 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(0);
-  myCard = new Card();
+ // myCard = new Card();
+  let selectedFaces = [];
+  for (let a = 0; a < 8; a++) {
+    const randomIdx = floor(random(cardfaceArray.length));
+    const face = cardfaceArray[randomIdx];
+    // each card appears twice in the grid, 16 total
+    selectedFaces.push(face);
+    selectedFaces.push(face);
+    // remove cardface
+    cardfaceArray.splice(randomIdx, 1);
+  }
+  selectedFaces = shuffleArray(selectedFaces);
+  for (let b = 0; b < 2; b++) { // 2 rows
+    for (let c = 0; c < 8; c++) { // 8 cards each
+      const faceImage = selectedFaces.pop();
+      cards.push(new Card(startingX, startingY, faceImage));
+        startingX += 140;
+        }
+        startingY += 250;
+        startingX = 120; // restarting X in the second row
+    }
 }
 
 function mousePressed() {
-  console.log(myCard.didHit(mouseX, mouseY));
+  // console.log(myCard.didHit(mouseX, mouseY));
+  for (let d = 0; d < cards.length; d++) {
+    if(cards[d].didHit(mouseX, mouseY)) {
+      console.log('flipped', cards[d]); // which cards in the array are flipped over
+    }
+  }
 }
 
 // function draw () {
@@ -41,21 +70,24 @@ function mousePressed() {
 // }
 
 class Card {
-  constructor () {
-    this.x = 100;
-    this.y = 100;
+  constructor (x, y, cardFaceImage) {
+    this.x = x;
+    this.y = y;
     this.width = 120;
     this.height = 220;
     this.face = DOWN;
+    this.cardFaceImage = cardFaceImage;
     this.show();
   }
   show () {
     if (this.face === DOWN) {
-      fill(200, 200, 200);
+      // fill(200, 200, 200);
       rect(this.x, this.y, this.width, this.height, 5);
+      image(cardback, this.x, this. y);
     } else {
-      fill(255, 0, 0);
+      fill(27, 73, 148);
       rect(this.x, this.y, this.width, this.height, 5);
+      image(this.cardFaceImage, this.x, this.y);
     }
   }
 
