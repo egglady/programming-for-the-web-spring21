@@ -28,7 +28,7 @@ function preload() {
     loadImage('images/gouda.png'),
     loadImage('images/parmesan.png'),
     loadImage('images/swiss.png')
-    ]
+  ]
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -47,11 +47,11 @@ function setup() {
     for (let c = 0; c < 8; c++) { // 8 cards each
       const cardfaceImage = flippedFaces.pop();
       cards.push(new Card(startingX, startingY, cardfaceImage));
-        startingX += 140;
-      }
-        startingY += 250;
-        startingX = 120; // restarting X in the second row
+      startingX += 140;
     }
+    startingY += 250;
+    startingX = 120; // restarting X in the second row
+  }
 }
 function draw() {
   background('#222');
@@ -64,7 +64,7 @@ function draw() {
   }
   // not matching
   for (let d = 0; d < cards.length; d++) {
-    if(!cards[d].isMatch) {
+    if (!cards[d].isMatch) {
       cards[d].face = DOWN;
     }
     cards[d].show(); // keep the cards up if they are a match
@@ -102,7 +102,7 @@ function mousePressed() {
         window.clearTimeout(loopTimeout);
       }, 1000) // keep the unmatched cards up for 1 sec before flipping them over again
     }
-    }
+  }
 }
 class Card {
   constructor (x, y, cardfaceImage) {
@@ -114,6 +114,7 @@ class Card {
     this.cardFaceImage = cardfaceImage;
     this.show();
   }
+
   show () {
     if (this.face === DOWN) {
       // the cardback
@@ -126,20 +127,22 @@ class Card {
       image(this.cardFaceImage, this.x, this.y);
     }
   }
+
   didHit (mouseX, mouseY) {
-    if((mouseX >= this.x && mouseX <= this.x + this.width) && (mouseY >= this.y && mouseY <= this.y + this.height)) {
+    if ((mouseX >= this.x && mouseX <= this.x + this.width) && (mouseY >= this.y && mouseY <= this.y + this.height)) {
       this.flip();
       return true;
     } else {
-        return false;
+      return false;
     }
   }
+
   flip () {
     if (this.face === DOWN) {
       this.face = UP;
     } else {
       this.face = DOWN;
-    } 
+    }
     this.show();
   }
 }
@@ -149,7 +152,7 @@ function shuffleArray (array) {
   while (counter > 0) {
     // pick random index
     const idx = Math.floor(Math.random() * counter);
-    // decrease counter by 1 (decrement)
+    // decrement counter by 1
     counter--;
     // swap the last element with it
     const temp = array[counter];
@@ -166,11 +169,11 @@ function shuffleArray (array) {
 // naming key:
 // cardback - the back of the card that I designed
 // cardfaceArray - the array where all my images of cheeses are loaded, to be spliced out when matched
-// cards []
-// face
-// flippedFaces - the cards someone clicked on to see if they’re a match
+// cards - globally defined array for making new cards with the Card class and flipping them back over if they're not a match with the d variable
+// face - const variable in setup for the face of the card to put new cards into the flippeFaces array
+// flippedFaces - an array for the cards someone clicked on to see if they’re a match
 // cardfaceImage - the cheese picture on the card face
-// flippedCards - for verifing Matches
+// flippedCards - an array defined in gameState for verifing matches
 
 // naming for Loops:
 // a - for randomizing the cards, pushing them to flippedFaces, and removing them from the array
