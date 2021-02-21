@@ -54,10 +54,10 @@ function setup() {
   }
 }
 function draw() {
-  background('#222');
+  background(34, 34, 34);
   // winning
   if (gameState.matched === gameState.totalPairs) {
-    fill('magenta');
+    fill(219, 42, 7);
     textFont('Candal');
     textSize(40);
     text('Booyah! You win', 520, 650);
