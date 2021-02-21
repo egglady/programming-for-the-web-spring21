@@ -58,6 +58,7 @@ function draw() {
   // winning
   if (gameState.matched === gameState.totalPairs) {
     fill('magenta');
+    textFont('Candal');
     textSize(40);
     text('Booyah! You win', 520, 650);
     noLoop();
@@ -73,6 +74,7 @@ function draw() {
   gameState.flippedCards.length = 0;
   gameState.waiting = false;
   fill(255);
+  textFont('Candal');
   textSize(30);
   text('matches: ' + gameState.matched, 100, 620);
   text('attempts: ' + gameState.attempts, 100, 670);
