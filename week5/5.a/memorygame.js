@@ -10,14 +10,14 @@ let startingY = 100;
 let cardback;
 let cardfaceArray = [];
 
-// const gameState = {
-//   totalPairs: 8,
-//   flippedCards: [],
-//   numMatched: 0,
-//   attempts: 0,
-//   waiting: false
+const gameState = {
+  totalPairs: 8,
+  flippedCards: [],
+  numMatched: 0,
+  attempts: 0,
+  waiting: false
 
-// };
+};
 
 
 function preload() {
@@ -36,8 +36,6 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(0);
- // myCard = new Card();
   let flippedFaces = [];
   for (let a = 0; a < 8; a++) {
     const randomIdx = floor(random(cardfaceArray.length));
@@ -60,20 +58,64 @@ function setup() {
     }
 }
 
-function mousePressed() {
-  // console.log(myCard.didHit(mouseX, mouseY));
-  for (let d = 0; d < cards.length; d++) {
-    if(cards[d].didHit(mouseX, mouseY)) {
-      console.log('flipped', cards[d]); // which cards in the array are flipped over
-    }
+function draw() {
+  background('#222');
+  // winning 
+  if (gameState.numMatched === gameState.totalPairs) {
+    fill('magenta');
+    textSize(50);
+    text('Booyah!', 400, 625);
+    noLoop();
   }
+  for (let e = 0; e < cards.length; e++) {
+    // the ! is not 
+    if(!cards[e].isMatch) {
+      cards[e].face = DOWN;
+    }
+    cards[e].show(); // keep the cards up if they are a match
+  }
+  noLoop();
+  gameState.flippedCards.legth = 0;
+  gameState.waiting = false;
+  fill(255);
+  textSize(30)
+  text('matches: ' + gameState.numMatched, 100, 620);
+  text('attempts: ' + gameState.attempts, 100, 670);
 }
 
-// function draw () {
-//   if(startingId > 0) {
-//       noLoop();
-//       fill(200);
-//       textSize(20);
+function mousePressed() {
+  if (gameState.waiting) {
+    return;
+  }
+  for (let e = 0; e < cards.length; e++) {
+    if (gameState.flippedCards.length < 2 && cards[e].didHit(mouseX, mouseY)) {
+      gameState.flippedCards.push(cards[e]);
+      console.log('flipped', cards[e]); // which cards in the array are flipped over
+    }
+  }
+  if (gameState.flippedCards.length === 2) {
+    gameState.attempts++;
+    if (gameState.flippedCards[0].cardFaceImage === gameState.flippedCards[1].cardFaceImage) {
+      gameState.flippedCards[0].isMatch = true;
+      gameState.flippedCards[1].isMatch = true;
+      gameState.flippedCards.length = 0;
+      gameState.numMatched++;
+      loop();
+    } else {
+      gameState.waiting = true;
+      const loopTimeout = window.setTimeout(() => {
+        loop();
+        window.clearTimeout(loopTimeout);
+      }, 1000)
+    }
+    }
+}
+// function mousePressed() {
+//   // console.log(myCard.didHit(mouseX, mouseY));
+//   for (let d = 0; d < cards.length; d++) {
+//     if(cards[d].didHit(mouseX, mouseY)) {
+//       console.log('flipped', cards[d]); // which cards in the array are flipped over
+//     }
 //   }
 // }
 
@@ -142,9 +184,11 @@ function shuffleArray (array) {
 // face
 // flippedFaces - the cards someone clicked on to see if they’re a match
 // cardfaceImage - the cheese picture on the card face
+// flippedCards - for verifing Matches
 
 // naming for Loops:
 // a
 // b
 // c
 // d
+// e
