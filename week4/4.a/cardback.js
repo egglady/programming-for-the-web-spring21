@@ -6,7 +6,7 @@ function setup() {
 function draw() {
     noStroke();
     fill(27, 73, 148);
-    rect(0, 0,120, 220, 5);
+    rect(0, 0, 120, 220, 5);
     stroke('#f7a394');
     fill(219, 42, 7, 255);
     rect(5, 5, 110, 210);
