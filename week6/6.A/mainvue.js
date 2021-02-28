@@ -9,6 +9,7 @@ var fact = new Vue({
     llamaHeight: 'Llamas are on average between 5 ft 6 in and 5 ft 9 in, close in height to an average human, so llamas would make a great opponent in a staring contest.',
     llamaAngry: 'When one llama is angry at another, they will stick out their tongue to express their dislike.',
     llamaEmperor: 'The Emperor’s New Groove is an animated comedy movie set in the Inca kingdom, in which selfish and egotistical emperor Kuzco is turned into a llama by his advisor, Yzma. After being removed from his palace, he goes on a quest to reclaim his throne and return to human form with the help of a kindly peasant, Pacha. This movie is the second greatest film of all time, behind The Godfather I.',
+    emperorsNewGroove: true,
     llamaGodfather: 'There are no llamas with speaking roles in The Godfather film series.',
     llamaEgg: 'No, llama’s do not lay eggs.'
   }
