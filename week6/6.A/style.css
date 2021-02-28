@@ -1,8 +1,41 @@
 :root {
-    --displayfont: 'Fascinate';
+    --displayfont: 'Fascinate', cursive;
+    --mainfont: 'Strait', sans-serif;
 }
 
 h1 {
     font-family: var(--displayfont);
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    margin: 1rem;
+}
+
+p {
+    font-family: var(--mainfont);
+    font-size:1.1rem;
+    letter-spacing: .08rem;
+}
+
+.header {
+    text-align: center;
+    background-color: rgba(100, 95, 220, .7);
+    padding: .8rem;
+    margin: 2rem 0;
+
+}
+
+.container {
+    max-width: 80rem;
+    margin: auto;
+    text-align: center;
+}
+
+#fact {
+    padding: 2% 20%;
+    line-height: 1.5rem;
+    background-color: rgb(218, 210, 247);
+    margin-bottom: 2rem;
+}
+
+p:hover {
+    color: rgb(34, 11, 181);
 }
