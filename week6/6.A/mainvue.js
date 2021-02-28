@@ -15,4 +15,3 @@ var fact = new Vue({
   }
 
 })
-
