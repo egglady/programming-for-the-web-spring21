@@ -1,0 +1,8 @@
+:root {
+    --displayfont: 'Fascinate';
+}
+
+h1 {
+    font-family: var(--displayfont);
+    font-size: 2.5rem;
+}
