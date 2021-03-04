@@ -1,0 +1,49 @@
+:root {
+    --displayfont: 'Fascinate', cursive;
+    --mainfont: 'Strait', sans-serif;
+    --peach: rgb(252, 197, 154);
+    --red: rgb(173, 52, 3)
+}
+
+h1 {
+    font-family: var(--displayfont);
+    color: var(--red);
+    margin: 1rem;
+}
+
+.header {
+    text-align: center;
+    background-color: var(--peach);
+    padding: .8rem;
+    margin: 2rem 0;
+}
+
+.container {
+    max-width: 80rem;
+    margin: auto;
+    text-align: center;
+}
+
+.comparison {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comparison-item {
+    margin: 1rem;
+    min-width: 35rem;
+}
+
+.comparison li {
+    list-style-type: none;
+}
+
+#llama {
+    border: 1px solid red;
+    text-align: left;
+}
+
+#alpaca {
+    border: 1px solid blue;
+    text-align: right;
+}

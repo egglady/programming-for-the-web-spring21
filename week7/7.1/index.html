@@ -3,14 +3,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Strait&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <title>Llamas vs. Alpacas</title>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>Llamas vs. Alpacas</h1>
+        </div>
 
-    <div id="links" v-cloak>
-        <a v-bind:href="llamaWiki">Wikipedia article on llamas</a>
-        <a v-bind:href="alpacaWiki">Wikipedia article on alpacas</a>
+        <div class="comparison">
+            <div class="comparison-item">
+                <div id="llama" v-cloak>
+                    <h2>Llamas</h2>
+                    <ul>
+                        <li>Llama 1</li>
+                        <li>Llama 2</li>
+                        <li>Llama 3</li>
+                        <li>Llama 4</li>
+                        <li>Llama 5</li>
+                        <li>Llama 6</li>
+                        <li>Llama 7</li>
+                        <li>Llama 8</li>
+                        <li>Llama 9</li>
+                        <li>Llama 10</li>
+                    </ul>
+                    <a v-bind:href="llamaWiki">Wikipedia article on llamas</a>
+                </div>
+            </div>
+
+            <div class="comparison-item">
+                <div id="alpaca" v-cloak>
+                    <h2>Alpacas</h2>
+                    <ul>
+                        <li>Alpaca 1</li>
+                        <li>Alpaca 2</li>
+                        <li>Alpaca 3</li>
+                        <li>Alpaca 4</li>
+                        <li>Alpaca 5</li>
+                        <li>Alpaca 6</li>
+                        <li>Alpaca 7</li>
+                        <li>Alpaca 8</li>
+                        <li>Alpaca 9</li>
+                        <li>Alpaca 10</li>
+                    </ul>
+                    <a v-bind:href="alpacaWiki">Wikipedia article on alpacas</a>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="main.js"></script>
     
