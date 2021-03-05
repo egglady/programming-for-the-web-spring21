@@ -1,19 +1,23 @@
 :root {
     --displayfont: 'Fascinate', cursive;
     --mainfont: 'Strait', sans-serif;
-    --peach: rgb(252, 197, 154);
-    --red: rgb(173, 52, 3)
+    --grey: rgb(225, 230, 230);
+    --black-red: rgb(31, 12, 7);
 }
 
 h1 {
     font-family: var(--displayfont);
-    color: var(--red);
+    color: white;
     margin: 1rem;
+}
+
+body {
+    background-color: var(--grey);
 }
 
 .header {
     text-align: center;
-    background-color: var(--peach);
+    background-color: var(--black-red);
     padding: .8rem;
     margin: 2rem 0;
 }
@@ -27,23 +31,37 @@ h1 {
 .comparison {
     display: flex;
     justify-content: space-between;
+    font-family: 'Strait';
 }
 
 .comparison-item {
     margin: 1rem;
     min-width: 35rem;
+    line-height: 2rem;
+    background-color: white;
+    padding: 1rem;
 }
+
 
 .comparison li {
     list-style-type: none;
+    padding: .25rem;
+}
+
+.comparison-item:hover {
+    color: white;
+    margin: 2rem;
+    background-color: var(--black-red);
 }
 
 #llama {
-    border: 1px solid red;
     text-align: left;
 }
 
 #alpaca {
-    border: 1px solid blue;
     text-align: right;
+}
+
+h2.active {
+    font-size: 2rem;
 }

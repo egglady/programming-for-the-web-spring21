@@ -16,39 +16,39 @@
         <div class="comparison">
             <div class="comparison-item">
                 <div id="llama" v-cloak>
-                    <h2>Llamas</h2>
-                    <ul>
-                        <li>Llama 1</li>
-                        <li>Llama 2</li>
-                        <li>Llama 3</li>
-                        <li>Llama 4</li>
-                        <li>Llama 5</li>
-                        <li>Llama 6</li>
-                        <li>Llama 7</li>
-                        <li>Llama 8</li>
-                        <li>Llama 9</li>
-                        <li>Llama 10</li>
+                    <h2 v-bind:class="{active: currentRoute==='big'}"> Llamas</h2>
+                    <ul v-bind:style="[baseStyle]">
+                        <li>Llamas communicate with each other by humming.</li>
+                        <li>Llamas have a soothing aura about them and can be trained as professional therapy animals.</li>
+                        <li>Llama spit to establish a pecking order, but they rarely spit on humans.</li>
+                        <li>Llamas are friendlier to humans than alpacas.</li>
+                        <li>Llama poop, which we all know has no odor, also is a great fertilizer and fire starter.</li>
+                        <li>Llamas are on average between 5 ft 6 in and 5 ft 9 in, close in height to an average human, so llamas would make a great opponent in a staring contest.</li>
+                        <li>When one llama is angry at another, they will stick out their tongue to express their dislike.</li>
+                        <li>The Emperor’s New Groove is an animated comedy movie in which said emperor is turned into a llama. This movie is the second greatest film of all time, behind The Godfather I.</li>
+                        <li>Sadly, there are no llamas with speaking roles in The Godfather film series.</li>
+                        <li>No, llamas do not lay eggs.</li>
                     </ul>
-                    <a v-bind:href="llamaWiki">Wikipedia article on llamas</a>
+                    <a v-bind:href="llamaWiki" v-bind:style="linkColor">Wikipedia article on llamas</a>
                 </div>
             </div>
 
             <div class="comparison-item">
                 <div id="alpaca" v-cloak>
-                    <h2>Alpacas</h2>
-                    <ul>
-                        <li>Alpaca 1</li>
-                        <li>Alpaca 2</li>
-                        <li>Alpaca 3</li>
-                        <li>Alpaca 4</li>
-                        <li>Alpaca 5</li>
-                        <li>Alpaca 6</li>
-                        <li>Alpaca 7</li>
-                        <li>Alpaca 8</li>
-                        <li>Alpaca 9</li>
-                        <li>Alpaca 10</li>
+                    <h2 v-bind:class="{active: currentRoute==='big'}">Alpacas</h2>
+                    <ul v-bind:style="baseStyle">
+                        <li>Alpacas hum to communicate just like alpacas, as do many livestock.</li>
+                        <li>Alpacas are not frequently used as therapy animals or are known for their soothing aura.</li>
+                        <li>Alpaca also will spit.</li>
+                        <li>Alpacas are more aggresive than llamas.</li>
+                        <li>Similarly, alpaca poop does not smell and is nutrient rich, making it a great fertilizer and fire starter.</li>
+                        <li>Alpaca are way shorter than llamas! They average about 2.7 - 3.2 ft tall, making them great for staring contents with small children.</li>
+                        <li>Animals in the camelid family (both alpaca and llama) stick out their tongue to express annoyance.</li>
+                        <li>Alpacas do not feature in either Emperor's New Groove or The Godfather I. However, an alpaca wool rug features in one scene in the film American Gangster.</li>
+                        <li>The alpaca wool rug in American Gangster certainly has no speaking roles. It needs to be cleaned.</li>
+                        <li>Alpaca are mammals, they also do not lay eggs.</li>
                     </ul>
-                    <a v-bind:href="alpacaWiki">Wikipedia article on alpacas</a>
+                    <a v-bind:href="alpacaWiki" v-bind:style="linkColor">Wikipedia article on alpacas</a>
                 </div>
             </div>
         </div>
