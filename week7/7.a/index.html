@@ -10,13 +10,25 @@
     <h1>Shiny Art</h1>
 
     <div id="art-list" v-cloak>
-        <div v-for="artwork in artworks">
-            <div>{{ artwork.title }}</div>
-            <div>{{ artwork.artist }}</div>
-            <div>{{ artwork.medium }}</div>
-            <div>{{ artwork.date }}</div>
-            <div>{{ artwork.onView }}</div>
-        </div>
+        <table>
+            <thead>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Medium</th>
+                <th>Date</th>
+                <th>On View?</th>
+            </thead>
+            <tbody>
+                <tr v-for="artwork in artworks">
+                    <td>{{ artwork.title }}</td>
+                    <td>{{ artwork.artist }}</td>
+                    <td>{{ artwork.medium }}</td>
+                    <td>{{ artwork.date }}</td>
+                    <td>{{ artwork.onView }}</td>
+                </tr>
+    
+            </tbody>
+        </table>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
