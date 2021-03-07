@@ -17,6 +17,7 @@
                 <th>Artist</th>
                 <th>Medium</th>
                 <th>Date</th>
+                <th>Artwork Image</th>
                 <th>On View?</th>
             </thead>
             <tbody>
@@ -25,7 +26,7 @@
                     <td>{{ artwork.artist }}</td>
                     <td>{{ artwork.medium }}</td>
                     <td>{{ artwork.date }}</td>
-                    <td><img v-bind:src="artwork.image"></td>
+                    <td><img v-bind:src="artwork.image" v-bind:alt="artwork.imageAlt"></td>
                     <td>{{ artwork.onView }}</td>
                 </tr>
     
