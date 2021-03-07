@@ -7,7 +7,8 @@ var vm = new Vue ({
         artist: 'Unknown artist',
         medium: 'coral, brass, niello, silver, iron, gold',
         date: 'late 16th century',
-        image: 'images/knife.jpg',
+        image: 'images/knife-400.jpg',
+        imageAlt: 'A knife and spear set with ornate floral inlaid designs on the hilt and sides of the knife, with large spiky red coral handles on a black background.',
         onView: true
       },
       {
@@ -15,7 +16,8 @@ var vm = new Vue ({
         artist: 'Hans Ledwinka',
         medium: 'all-metal construction',
         date: '1948, designed 1936',
-        image: 'images/tatra.jpg',
+        image: 'images/tatra-400.jpg',
+        imageAlt: 'A silver car with distinctive rear dorsal fins with no passengers in a museum gallery.',
         onView: true
       },
       {
@@ -23,7 +25,8 @@ var vm = new Vue ({
         artist: 'William Grigg',
         medium: 'silver and wood',
         date: 'c. 1791 - 1794',
-        image: 'images/teapot.jpg',
+        image: 'images/teapot-400.jpg',
+        imageAlt: 'An oval silver teapot with a black handle and an engraved design of a crest on its body.',
         onView: true
       },
       {
@@ -31,7 +34,8 @@ var vm = new Vue ({
         artist: 'Unknown artist',
         medium: 'gold',
         date: '19th - 20th century',
-        image: 'images/pambadam-earrings.jpg',
+        image: 'images/pambadam-earrings-400.jpg',
+        imageAlt: 'Two geometric gold earrings in the abstract shape of a cobray laying eggs on her nest.',
         onView: true
       },
       {
@@ -39,7 +43,8 @@ var vm = new Vue ({
         artist: 'Walter Dorwin Teague',
         medium: 'mirrored glass, chrome, painted wood, electrical components',
         date: 'c. 1937',
-        image: 'images/nocturne-radio.jpg', 
+        image: 'images/nocturne-radio-400.jpg',
+        imageAlt: 'A furniture-sized futuristic circular radio with a bright blue mirrored glass facade.',
         onView: true
       }
     ]
