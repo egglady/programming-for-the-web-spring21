@@ -25,7 +25,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="(artwork, index) in artworks" v-bind:class="{odd: (index+1) % 2 !==0}">
-                            <td>{{ artwork.title }}</td>
+                            <td><a v-bind:href="artwork.link">{{ artwork.title }}</a></td>
                             <td v-bind:class="{unknown: artwork.artist.includes('Unknown artist')}">{{ artwork.artist }}</td>
                             <td>{{ artwork.medium }}</td>
                             <td>{{ artwork.date }}</td>
@@ -40,7 +40,7 @@
             <div class="statements">
                 <p>Works with unknown artists are highlighted.</p>
                 <p>All artworks are in the collection of the Minneapolis Institute of Art. Check out the collection <a href="https://collections.artsmia.org/">here</a>.</p>
-                <p id="copyright">&copy; All images are in the public domain or have no a stated copyright.</p>
+                <p id="copyright">&copy; All images are in the public domain or have no stated copyright.</p>
             </div>
         </div>
     </div>

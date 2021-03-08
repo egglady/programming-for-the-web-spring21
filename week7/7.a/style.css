@@ -31,7 +31,6 @@ h1 {
     max-width: 80rem;
     display: flex;
     justify-content: center;
-    border: 1px solid red;
     padding-top: 2rem;
     padding-bottom: 1rem;
 }
@@ -73,28 +72,31 @@ td {
     max-width: 400px;
 }
 
+td a {
+    color: #000;
+}
+
+/* About Section Styles */
 .about {
     background-color: #333;
     color: #fff;
     padding: 2rem;
     margin: 0;
 }
-
 .statements {
     max-width: 80rem;
     margin: auto;
 }
-
 .statements a {
     color: #fff;
     text-decoration: none;
 }
-
 .statements a:hover {
     text-decoration: underline;
 }
 
 #copyright {
     color: #ccc;
-    font-size: .8rem;
+    font-size: .9rem;
+    font-weight: 200;
 }
