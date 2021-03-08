@@ -1,6 +1,7 @@
 var vm = new Vue ({
   el: '#art-list',
   data: {
+
     artworks: [
       {
         title: 'Knife, from a two-piece cutlery set',
@@ -9,7 +10,7 @@ var vm = new Vue ({
         date: 'late 16th century',
         image: 'images/knife-400.jpg',
         imageAlt: 'A knife and spear set with ornate floral inlaid designs on the hilt and sides of the knife, with large spiky red coral handles on a black background.',
-        onView: true
+        onView: true,
       },
       {
         title: 'Tatra T87 four door sedan',
