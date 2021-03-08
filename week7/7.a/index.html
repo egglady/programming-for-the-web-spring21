@@ -21,16 +21,14 @@
                     <th>Medium</th>
                     <th>Date</th>
                     <th>Artwork Image</th>
-                    <th>On View?</th>
                 </thead>
                 <tbody>
-                    <tr v-for="(artwork, index) in artworks" v-bind:class="{odd: (index+1) % 2 !==0}" v-bind:class="{box}">
+                    <tr v-for="(artwork, index) in artworks" v-bind:class="{odd: (index+1) % 2 !==0}">
                         <td>{{ artwork.title }}</td>
-                        <td>{{ artwork.artist }}</td>
+                        <td v-bind:class="{unknown: artwork.artist.includes('Unknown artist')}">{{ artwork.artist }}</td>
                         <td>{{ artwork.medium }}</td>
                         <td>{{ artwork.date }}</td>
                         <td><img v-bind:src="artwork.image" v-bind:alt="artwork.imageAlt"></td>
-                        <td>{{ artwork.onView }}</td>
                     </tr>
                 </tbody>
             </table>

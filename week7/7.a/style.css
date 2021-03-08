@@ -42,6 +42,6 @@ img {
     max-width: 120px;
 }
 
-.box {
-    text-align: center;
+.unknown {
+    background-color: rgb(255, 222, 156);
 }
