@@ -67,7 +67,7 @@ const va = new Vue ({
       { name: 'Dodger blue', value: 'dodgerblue' },
       { name: 'Egg Yolk Yellow', value: 'eggyellow' }
     ],
-    status: ''
+    status: 'Describe your alpaca here'
   }
 });
 
