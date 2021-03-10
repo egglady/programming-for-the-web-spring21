@@ -14,7 +14,7 @@ form {
     width: 100%;
     max-width: 300px;
     margin: 0 auto;
-    background-color:  rgb(16, 104, 222);
+    background-color:  rgb(8, 49, 102);
 }
 div {
     margin: 10px 0;
@@ -22,6 +22,11 @@ div {
 }
 div.alpaca-status, div.alpaca-color, div.output {
     flex-direction: column;
+}
+div.output {
+    background-color: rgb(11, 76, 161);
+    padding: 2rem;
+    margin: 0;
 }
 div label {
     margin-right: 10px;
