@@ -70,5 +70,3 @@ const va = new Vue ({
     status: 'Describe your alpaca here'
   }
 });
-
-// ******input city
