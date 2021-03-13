@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Shiny Art Collection</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Shiny Art</h1>
+        </div>
+
+        <div class="table-container">
+            <div id="art-list" v-cloak>
+                <table>
+                    <thead class="table-headings">
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>Medium</th>
+                        <th>Date</th>
+                        <th>Artwork Image</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(artwork, index) in artworks" v-bind:class="{odd: (index+1) % 2 !==0}">
+                            <td><a v-bind:href="artwork.link">{{ artwork.title }}</a></td>
+                            <td v-bind:class="{unknown: artwork.artist.includes('Unknown artist')}">{{ artwork.artist }}</td>
+                            <td>{{ artwork.medium }}</td>
+                            <td>{{ artwork.date }}</td>
+                            <td><img v-bind:src="artwork.image" v-bind:alt="artwork.imageAlt"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="about">
+            <h2>About the Shiny Art Collection</h2>
+            <div class="statements">
+                <p>Works with unknown artists are highlighted.</p>
+                <p>All artworks are in the collection of the Minneapolis Institute of Art. Check out the collection <a href="https://collections.artsmia.org/">here</a>.</p>
+                <p id="copyright">&copy; All images are in the public domain or have no stated copyright.</p>
+            </div>
+        </div>
+        <div id="formApp">
+            <form>
+                <fieldset>
+                    <legend></legend>
+                </fieldset>
+                
+
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+    <script src="main.js"></script>
+    
+</body>
+</html>
