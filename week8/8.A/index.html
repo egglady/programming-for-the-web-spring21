@@ -33,7 +33,35 @@
                         </tr>
                     </tbody>
                 </table>
+                <form v-on:submit.prevent="submitHandler">
+                    <fieldset>
+                        <legend>Add your works to the Shiny Art Collection</legend>
+                        <div>
+                            <label for="title">Title<input id="title" type="text">
+                        </label>
+                        </div>
+                        <div>
+                            <label for="artist">Artist<input id="artist" type="text">
+                        </label>
+                        </div>
+                        <div>
+                            <label for="medium">Medium<input id="medium" type="text">
+                        </label>
+                        </div>
+                        <div>
+                            <label for="date">Date<input id="date" type="text">
+                        </label>
+                        </div>
+                        <div>
+                            <label for="image">Image<input id="image" type="text">
+                        </label>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </fieldset>
+    
+                </form>
             </div>
+            
         </div>
         <div class="about">
             <h2>About the Shiny Art Collection</h2>
@@ -42,15 +70,6 @@
                 <p>All artworks are in the collection of the Minneapolis Institute of Art. Check out the collection <a href="https://collections.artsmia.org/">here</a>.</p>
                 <p id="copyright">&copy; All images are in the public domain or have no stated copyright.</p>
             </div>
-        </div>
-        <div id="formApp">
-            <form>
-                <fieldset>
-                    <legend></legend>
-                </fieldset>
-                
-
-            </form>
         </div>
     </div>
 
