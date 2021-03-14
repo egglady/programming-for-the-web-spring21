@@ -1,16 +1,17 @@
+/* Main Styles */
+
 :root {
     --mainfont: "Work Sans", sans-serif;
 }
-
 body {
     margin: 0;
 }
-
 .container {
     font-family: var(--mainfont);
     font-weight: 300;
 }
 
+/* Typography */
 h1 {
     font-family: var(--mainfont);
     font-size: 2.8rem;
@@ -20,61 +21,86 @@ h1 {
     margin: 0;
     letter-spacing: .1rem;
 }
+h3 {
+    font-size: 1.4rem;
+}
 
 .header {
     background-color: #222;
     margin-top: auto;
+    padding: 1rem;
 }
 
+/* Table Styles*/
 .table-container {
     margin: auto;
     max-width: 65rem;
     display: flex;
     justify-content: center;
-    padding-top: 2rem;
+    padding-top: 4rem;
     padding-bottom: 1rem;
 }
-
 .table-headings {
     font-weight: 400;
     font-size: 1.2rem;
-    background-color:rgb(193, 188, 209);
-    /* padding: 1rem; */
+    background-color:rgb(165, 206, 240);
 }
-
 th {
     padding: 1rem;
 }
-
 th:hover {
-    background-color: rgb(178, 171, 204);
+    background-color: rgb(135, 184, 224);
 }
-
 .odd {
     background: #eee;
 }
-
 img {
     max-width: 180px;
 }
-
-.unknown {
-    background-color: rgb(255, 222, 156);
-}
-
-.unknown:hover {
-    background-color: rgb(240, 194, 103);
-}
-
 td {
     text-align: center;
     padding: 1.2rem;
     max-width: 400px;
 }
-
 td a {
     color: #000;
 }
+
+/* Unknown Artist */
+.unknown {
+    background-color: rgb(255, 222, 156);
+}
+.unknown:hover {
+    background-color: rgb(240, 194, 103);
+}
+
+/*Form Styles */
+form {
+    padding: 1rem 0 2rem 0;
+    background-color: rgb(16, 73, 120);
+    color: white;
+    margin: 4rem 0;
+}
+fieldset {
+    margin: 1rem;
+}
+.form-fields {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 60rem;
+    margin: 0;
+}
+.form-cell {
+    padding: 10px;
+    flex: 1 1 15rem;
+}
+.submit {
+    margin: 2rem 0 1rem 0;
+    display: flex;
+    justify-content: center;
+}
+
 
 /* About Section Styles */
 .about {
@@ -94,7 +120,6 @@ td a {
 .statements a:hover {
     text-decoration: underline;
 }
-
 #copyright {
     color: #ccc;
     font-size: .9rem;

@@ -5,7 +5,7 @@ var vm = new Vue ({
       title: '',
       artist: '',
       medium: '',
-      date: 'e.g. 1650 \"early 14th century\"',
+      date: 'e.g. 1650, early 14th century',
       image: '',
       link: ''
     },
