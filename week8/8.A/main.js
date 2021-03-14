@@ -65,6 +65,7 @@ var vm = new Vue ({
     submitHandler: () => {
       console.log('submitted new artwork');
       vm.artworks = vm.artworks.concat(vm.newShinyObj);
+      vm.resetForm();
     },
     resetForm: () => {
       vm.newShinyObj = {
@@ -75,5 +76,10 @@ var vm = new Vue ({
         image: ''
       }
     },
+    removeItem: item => {
+      vm.artworks = vm.artworks.filter(artwork => {
+        return artwork !== item;
+      });
+    }
   }
 })

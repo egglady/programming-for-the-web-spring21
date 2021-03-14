@@ -22,6 +22,7 @@
                         <th>Medium</th>
                         <th>Date</th>
                         <th>Artwork Image</th>
+                        <th>Remove?</th>
                     </thead>
                     <tbody>
                         <tr v-for="(artwork, index) in artworks" v-bind:class="{odd: (index+1) % 2 !==0}">
@@ -30,6 +31,7 @@
                             <td>{{ artwork.medium }}</td>
                             <td>{{ artwork.date }}</td>
                             <td><img v-bind:src="artwork.image" v-bind:alt="artwork.imageAlt"></td>
+                            <td><button type="button" v-on:click="removeItem(artwork)">Remove</button></td>
                         </tr>
                     </tbody>
                 </table>
