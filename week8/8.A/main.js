@@ -9,6 +9,9 @@ var vm = new Vue ({
       image: '',
       link: ''
     },
+    // newDate: {
+    //   date: '',
+    // },
     artworks: [
       {
         title: 'Knife, from a two-piece cutlery set',
@@ -63,17 +66,16 @@ var vm = new Vue ({
     ]
   },
   methods: {
+    // resetDate: () => {
+    //   vm.newDate = {
+    //     date: ''
+    //   }
+    // },
     submitHandler: () => {
       console.log('submitted new artwork');
       vm.artworks = vm.artworks.concat(vm.newShinyObj);
-      vm.resetDate();
       vm.resetForm();
       vm.validateText();
-    },
-    resetDate: () => {
-      vm.newShinyObj = {
-        date: '',
-      }
     },
     resetForm: () => {
       vm.newShinyObj = {
@@ -81,7 +83,8 @@ var vm = new Vue ({
         artist: '',
         medium: '',
         date: '',
-        image: ''
+        image: '',
+        link: ''
       }
     },
     removeItem: item => {
@@ -91,9 +94,9 @@ var vm = new Vue ({
     },
     validateText: function () {
       if (this.link !== "") {
-        window.alert ('Thank you!');
+        window.alert ('Add a link to your artwork from collections.artsmia.org');
       } else {
-        window.alert ('add a link to your artwork from collections.artsmia.org');
+        window.alert ('Thank you!');
       }
     }
   }
