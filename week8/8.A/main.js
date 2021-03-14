@@ -5,8 +5,9 @@ var vm = new Vue ({
       title: '',
       artist: '',
       medium: '',
-      date: '',
-      image: ''
+      date: 'e.g. 1650 \"early 14th century\"',
+      image: '',
+      link: ''
     },
     artworks: [
       {
@@ -65,7 +66,14 @@ var vm = new Vue ({
     submitHandler: () => {
       console.log('submitted new artwork');
       vm.artworks = vm.artworks.concat(vm.newShinyObj);
+      vm.resetDate();
       vm.resetForm();
+      vm.validateText();
+    },
+    resetDate: () => {
+      vm.newShinyObj = {
+        date: '',
+      }
     },
     resetForm: () => {
       vm.newShinyObj = {
@@ -80,6 +88,13 @@ var vm = new Vue ({
       vm.artworks = vm.artworks.filter(artwork => {
         return artwork !== item;
       });
+    },
+    validateText: function () {
+      if (this.link !== "") {
+        window.alert ('Thank you!');
+      } else {
+        window.alert ('add a link to your artwork from collections.artsmia.org');
+      }
     }
   }
 })
