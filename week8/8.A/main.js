@@ -1,7 +1,13 @@
 var vm = new Vue ({
   el: '#art-list',
   data: {
-
+    newShinyObj: {
+      title: '',
+      artist: '',
+      medium: '',
+      date: '',
+      image: '',
+    },
     artworks: [
       {
         title: 'Knife, from a two-piece cutlery set',
