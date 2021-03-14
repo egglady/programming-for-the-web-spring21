@@ -37,28 +37,27 @@
                     <fieldset>
                         <legend>Add your works to the Shiny Art Collection</legend>
                         <div>
-                            <label for="title">Title<input id="title" type="text">
+                            <label for="title">Title<input id="title" type="text" v-model="newShinyObj.title">
                         </label>
                         </div>
                         <div>
-                            <label for="artist">Artist<input id="artist" type="text">
+                            <label for="artist">Artist<input id="artist" type="text" v-model="newShinyObj.artist">
                         </label>
                         </div>
                         <div>
-                            <label for="medium">Medium<input id="medium" type="text">
+                            <label for="medium">Medium<input id="medium" type="text" v-model="newShinyObj.medium">
                         </label>
                         </div>
                         <div>
-                            <label for="date">Date<input id="date" type="text">
+                            <label for="date">Date<input id="date" type="text" v-model="newShinyObj.date">
                         </label>
                         </div>
                         <div>
-                            <label for="image">Image<input id="image" type="text">
+                            <label for="image">Image<input id="image" type="text" v-model="newShinyObj.image">
                         </label>
                         </div>
                         <button type="submit">Submit</button>
                     </fieldset>
-    
                 </form>
             </div>
             

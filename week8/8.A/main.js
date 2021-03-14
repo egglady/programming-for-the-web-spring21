@@ -6,7 +6,7 @@ var vm = new Vue ({
       artist: '',
       medium: '',
       date: '',
-      image: '',
+      image: ''
     },
     artworks: [
       {
@@ -60,5 +60,20 @@ var vm = new Vue ({
         link: 'https://collections.artsmia.org/art/6783/nocturne-radio-walter-dorwin-teague'
       }
     ]
+  },
+  methods: {
+    submitHandler: () => {
+      console.log('submitted new artwork');
+      vm.artworks = vm.artworks.concat(vm.newShinyObj);
+    },
+    resetForm: () => {
+      vm.newShinyObj = {
+        title: '',
+        artist: '',
+        medium: '',
+        date: '',
+        image: ''
+      }
+    },
   }
 })
