@@ -1,3 +1,16 @@
+// defining globally (therefore don't have to add it as component: artwork component in the Vue instance below
+Vue.component('artwork-component', {
+  template:
+        `<tr>
+        <td>{{title}}</td>
+        <td>{{artist}}</td>
+        <td>{{medium}}</td>
+        <td>{{date}}</td>
+        <td>{{image}}</td>
+        </tr>`,
+  props: ['title', 'artist', 'medium', 'date', 'image', 'link']
+});
+
 var vm = new Vue ({
   el: '#art-list',
   data: {
@@ -9,9 +22,6 @@ var vm = new Vue ({
       image: '',
       link: ''
     },
-    // newDate: {
-    //   date: '',
-    // },
     artworks: [
       {
         title: 'Knife, from a two-piece cutlery set',
@@ -21,7 +31,7 @@ var vm = new Vue ({
         image: 'images/knife-400.jpg',
         imageAlt: 'A knife and spear set with ornate floral inlaid designs on the hilt and sides of the knife, with large spiky red coral handles on a black background.',
         onView: true,
-        link:'https://collections.artsmia.org/art/109578/knife-italy'
+        link: 'https://collections.artsmia.org/art/109578/knife-italy'
       },
       {
         title: 'Tatra T87 four door sedan',
@@ -66,13 +76,9 @@ var vm = new Vue ({
     ]
   },
   methods: {
-    // resetDate: () => {
-    //   vm.newDate = {
-    //     date: ''
-    //   }
-    // },
     submitHandler: () => {
       console.log('submitted new artwork');
+      // var self= this; -  change the vms by adding a varialble called self and then referencing it in the call back, ie, replace vm with self?
       vm.artworks = vm.artworks.concat(vm.newShinyObj);
       vm.resetForm();
       vm.validateText();
@@ -100,4 +106,4 @@ var vm = new Vue ({
       }
     }
   }
-})
+});
