@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                         <div v-for="artwork in artworks">
-                            <artwork-component title="artwork.title" artist="artwork.artist" medium="artwork.medium" date="artwork.date" image="artwork.image"></artwork-component>
+                            <artwork-component v-bind:title="artwork.title" v-bind:artist="artwork.artist" v-bind:medium="artwork.medium" v-bind:date="artwork.date" v-bind:image="artwork.image"></artwork-component>
                         </div>
                            
         
