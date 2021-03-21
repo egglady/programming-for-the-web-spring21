@@ -6,7 +6,7 @@ Vue.component('artwork-component', {
         <td>{{artist}}</td>
         <td>{{medium}}</td>
         <td>{{date}}</td>
-        <td>{{image}}</td>
+        <td><img v-bind:src="image"></td>
         </tr>`,
   props: ['title', 'artist', 'medium', 'date', 'image', 'link']
 });
