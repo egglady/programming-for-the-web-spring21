@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Shiny Art Collection</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Shiny Art Collection</h1>
+        </div>
+
+        <div class="table-container">
+            <div id="art-list" v-cloak>
+                <table>
+                    <thead class="table-headings">
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>Medium</th>
+                        <th>Date</th>
+                        <th>Artwork Image</th>
+                        <th>Remove?</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(artwork, index) in artworks" v-bind:class="{odd: (index+1) % 2 !==0}">
+                            <td><a v-bind:href="artwork.link">{{ artwork.title }}</a></td>
+                            <td v-bind:class="{unknown: artwork.artist.includes('Unknown artist')}">{{ artwork.artist }}</td>
+                            <td>{{ artwork.medium }}</td>
+                            <td>{{ artwork.date }}</td>
+                            <td><img v-bind:src="artwork.image" v-bind:alt="artwork.imageAlt"></td>
+                            <td><button type="button" v-on:click="removeItem(artwork)">Remove</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <form v-on:submit.prevent="submitHandler">
+                    <fieldset>
+                        <legend><h3>Add to the Shiny Art Collection</h3></legend>
+                        <p>*All fields are required.</p>
+                        <div class="form-fields">
+                            <div class="form-cell">
+                                <label for="title">Title</label>
+                                <!-- <input id="title" type="text" v-model="newShinyObj.title"> -->
+                                <textarea id="title" cols="26" rows="1" type="text" v-model="newShinyObj.title"></textarea>
+                            </div>
+                            <div class="form-cell">
+                                <label for="artist">Artist</label>
+                                <!-- <input id="artist" type="text" v-model="newShinyObj.artist"> -->
+                                <textarea id="artist" cols="26" rows="1" type="text" v-model="newShinyObj.artist"></textarea>
+                            </div>
+                            <div class="form-cell">
+                                <label for="medium">Medium</label>
+                                <!-- <input id="medium" type="text" v-model="newShinyObj.medium"> -->
+                                <textarea id="medium" cols="26" rows="1" type="text" v-model="newShinyObj.medium"></textarea>
+                            </div>
+                            <div class="form-cell">
+                                <label for="date">Date</label>
+                                <textarea id="date" cols="26" rows="1" type="text" v-model="newShinyObj.date"></textarea>
+                                <!-- <input id="date" type="text" v-model="newShinyObj.date"> -->
+                                    <!--v-on:click="resetDate.date"-->
+                            </div>
+                            <div class="form-cell">
+                                <label for="image">Image</label>
+                            <!-- <input id="image" type="text" v-model="newShinyObj.image"> -->
+                            <textarea id="image" cols="26" rows="1" type="text" v-model="newShinyObj.image"></textarea>
+                            </div>
+                            <div class="form-cell">
+                                <label for="link">Artwork link</label>
+                            <!-- <input id="link" type="text" v-model="newShinyObj.link"> -->
+                            <textarea id="link" cols="23" rows="1" type="text" v-model="newShinyObj.link"></textarea>
+                            </div>
+                        </div>
+                        <div class="submit">
+                        <button type="submit">Submit</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            
+        </div>
+        <div class="about">
+            <h2>About the Shiny Art Collection</h2>
+            <div class="statements">
+                <p>Works with unknown artists are highlighted.</p>
+                <p>All artworks are in the collection of the Minneapolis Institute of Art. Check out the collection <a href="https://collections.artsmia.org/">here</a>.</p>
+                <p id="copyright">&copy; All images are in the public domain or have no stated copyright.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
