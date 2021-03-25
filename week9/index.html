@@ -25,11 +25,11 @@
                         <!-- <th>Remove?</th> -->
                     </thead>
                     <tbody>
-                        <div v-for="artwork in artworks">
-                            <artwork-component v-bind:title="artwork.title" v-bind:artist="artwork.artist" v-bind:medium="artwork.medium" v-bind:date="artwork.date" v-bind:image="artwork.image"></artwork-component>
-                        </div>
+                        <tr is="artwork-component" v-for="(artwork, index) in artworks" v-bind:class="{odd: (index+1) % 2 !==0}"
+                          v-bind:title="artwork.title" v-bind:artist="artwork.artist" v-bind:medium="artwork.medium" v-bind:date="artwork.date" v-bind:image="artwork.image" v-bind:alt-text="artwork.imageAlt" v-bind:link="artwork.link" >
+                        </tr>
+                        
                            
-
                           
                         <!--HTML before Component-->    
                         <!-- <tr v-for="(artwork, index) in artworks" v-bind:class="{odd: (index+1) % 2 !==0}">

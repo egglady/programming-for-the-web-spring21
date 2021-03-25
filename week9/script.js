@@ -1,14 +1,15 @@
-// defining globally (therefore don't have to add it as component: artwork component in the Vue instance below
+// defining globally; for replacing table data with reusable component
 Vue.component('artwork-component', {
   template:
         `<tr>
-        <td>{{title}}</td>
-        <td>{{artist}}</td>
+        <td><a v-bind:href="link">{{title}}</a></td>
+        <td v-bind:class="{unknown: artist.includes('Unknown artist')}">{{artist}}</td>
         <td>{{medium}}</td>
         <td>{{date}}</td>
-        <td><img v-bind:src="image"></td>
+        <td><img v-bind:src="image" v-bind:alt="altText"></td>
         </tr>`,
-  props: ['title', 'artist', 'medium', 'date', 'image', 'link']
+  props: ['title', 'artist', 'medium', 'date', 'image', 'altText', 'link']
+  // the altText and alt-text are the same, but different cases
 });
 
 var vm = new Vue ({
@@ -76,6 +77,7 @@ var vm = new Vue ({
     ]
   },
   methods: {
+    // for the form to add a new artwork
     submitHandler: () => {
       console.log('submitted new artwork');
       // var self= this; -  change the vms by adding a varialble called self and then referencing it in the call back, ie, replace vm with self?
