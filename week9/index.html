@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <title>Shiny Art Collection</title>
 </head>
 <body>
@@ -26,11 +27,8 @@
                     </thead>
                     <tbody>
                         <tr is="artwork-component" v-for="(artwork, index) in artworks" v-bind:class="{odd: (index+1) % 2 !==0}"
-                          v-bind:title="artwork.title" v-bind:artist="artwork.artist" v-bind:medium="artwork.medium" v-bind:date="artwork.date" v-bind:image="artwork.image" v-bind:alt-text="artwork.imageAlt" v-bind:link="artwork.link" >
+                          v-bind:title="artwork.title" v-bind:artist="artwork.artist" v-bind:medium="artwork.medium" v-bind:date="artwork.date" v-bind:image="artwork.image" v-bind:alt-text="artwork.imageAlt" v-bind:link="artwork.link">
                         </tr>
-                        
-                           
-                          
                         <!--HTML before Component-->    
                         <!-- <tr v-for="(artwork, index) in artworks" v-bind:class="{odd: (index+1) % 2 !==0}">
                             <td><a v-bind:href="artwork.link">{{ artwork.title }}</a></td>
@@ -97,9 +95,6 @@
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-
     <script src="script.js"></script>
     
 </body>

@@ -9,9 +9,8 @@ Vue.component('artwork-component', {
         <td><img v-bind:src="image" v-bind:alt="altText"></td>
         </tr>`,
   props: ['title', 'artist', 'medium', 'date', 'image', 'altText', 'link']
-  // the altText and alt-text are the same, but different cases
+  // between index.html and this script, the altText and alt-text are the same, but different cases
 });
-
 var vm = new Vue ({
   el: '#art-list',
   data: {
@@ -80,7 +79,6 @@ var vm = new Vue ({
     // for the form to add a new artwork
     submitHandler: () => {
       console.log('submitted new artwork');
-      // var self= this; -  change the vms by adding a varialble called self and then referencing it in the call back, ie, replace vm with self?
       vm.artworks = vm.artworks.concat(vm.newShinyObj);
       vm.resetForm();
       vm.validateText();
