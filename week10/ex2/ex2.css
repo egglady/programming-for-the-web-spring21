@@ -2,6 +2,12 @@
 
 html {
     font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    background-color: #16161d;
+}
+h1 {
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
 }
 .track-wrapper {
     display: flex;
@@ -12,22 +18,23 @@ html {
 .track {
     width: 144px;
     border: 3px solid black;
-    background: #ccc;
+    color: white;
+    background: #2d4054;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 10px 0;
 }
 .track.no-change {
-    border-color: blue;
+    border-color: white;
 }
 .track.up {
-    border-color: green;
+    border-color: #2c9e8f;
 }
 .track.down {
-    border-color: red;
+    border-color: #e01664;
 }
 .track h3 {
     margin: 0;
