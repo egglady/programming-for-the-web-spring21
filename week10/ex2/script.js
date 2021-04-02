@@ -6,7 +6,7 @@ Vue.component('streaming-track', {
   </div>`,
   props: ['track'],
   computed: {
-  }// not using es6 function here
+  // not using es6 function here
     trending: function () {
       const delta = this.track.rank - this.track.position // change in rank
       if (delta > 0) {
@@ -17,6 +17,7 @@ Vue.component('streaming-track', {
         return 'no-change'
       }
     }
+}
 });
 
 const vm = new Vue({
