@@ -1,7 +1,13 @@
 Vue.component('medieval-artwork', {
-   template: `<div>
+  template: `<div class="artwork">
         <h3>{{artwork.title}}</h3>
         <div><img v-bind:src="artwork.primaryImageSmall" alt="" /></div>
+        <p>{{artwork.artistDisplayName}}</p>
+        <p>{{artwork.artistDisplayBio}}</p>
+        <p>{{artwork.medium}}</p>
+        <p>{{artwork.period}}</p>
+        <p>{{artwork.objectDate}}</p>
+        <p>{{artwork.creditLine}}</p>
    </div>`,
    props: ['artwork'] // I make these ones up
 });

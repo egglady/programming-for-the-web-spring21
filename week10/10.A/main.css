@@ -1,0 +1,8 @@
+.artwork {
+    border: 1px solid red;
+}
+
+.artwork img {
+    width: 100%;
+    max-width: 400px;
+}
