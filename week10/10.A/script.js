@@ -1,8 +1,9 @@
 Vue.component('medieval-artwork', {
-   template: `<div class="artwork">
-        <h3>{{title}}</h3>
-        <div><img v-bind:src="primaryImageSmall" alt=""></div>
-   </div>`
+   template: `<div>
+        <h3>{{artwork.title}}</h3>
+        <div><img v-bind:src="artwork.primaryImageSmall" alt="" /></div>
+   </div>`,
+   props: ['artwork'] // I make these ones up
 });
 
 
@@ -17,7 +18,7 @@ var vm = new Vue({
     axios
       .get(baseUrl + '?departmentIds=17')
       .then(response => {
-        responseArray = response.data.objectIDs.slice(0, 19); // take out first 20 of the objectIDs in department 17
+        responseArray = response.data.objectIDs.slice(10, 19); // take out objects 11-20 of the objectIDs in department 17
         for(let k = 0; k < responseArray.length; k++) {
           axios
             .get(baseUrl + '/' + responseArray[k])

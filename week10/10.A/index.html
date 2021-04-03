@@ -10,8 +10,9 @@
 <body>
 
     <div id="museumApp">
-        <medieval-artwork v-bind:artwork="work" v-for="work in artworks"></medieval-artwork>
-
+        <div>
+            <medieval-artwork v-for="work in artObjects" v-bind:artwork="work"></medieval-artwork>
+        </div>
     </div>
     
     <script src="script.js"></script>
