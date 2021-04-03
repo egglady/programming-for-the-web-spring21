@@ -1,21 +1,21 @@
 Vue.component('medieval-artwork', {
    template: `<div class="artwork">
-        <h3>{{artwork.title}}</h3>
-        <div><img v-bind:src="artwork.primaryImageSmall" alt=""></div>
-   </div>`,
-   props: ['artwork']
+        <h3>{{title}}</h3>
+        <div><img v-bind:src="primaryImageSmall" alt=""></div>
+   </div>`
 });
 
 
 var vm = new Vue({
-    el: '#museumCollection',
+    el: '#museumApp',
     data: {
-        artworks: []
+       artObjects: []
     },
-    mounted () {
+    mounted: function() {
+        let responseArray = [] // holds response from first axios.get
+        let baseUrl = 'https://collectionapi.metmuseum.org/public/collection/v1/objects'
         axios
-        // .get('https://collectionapi.metmuseum.org/public/collection/v1/objects/321669')
-        .get('https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=17')
+        .get(baseUrl + '?departmentIds=17')
         .then(response => {
             console.log('response', response);
             vm.artworks = response.data;
