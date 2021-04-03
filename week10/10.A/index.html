@@ -3,11 +3,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <title>Assignment 10.A</title>
 </head>
 <body>
+
+    <div id="museumCollection">
+        <medieval-artwork v-bind:artwork="work" v-for="work in artworks"></medieval-artwork>
+
+    </div>
     
     <script src="script.js"></script>
 </body>

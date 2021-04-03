@@ -23,7 +23,7 @@ Vue.component('streaming-track', {
 const vm = new Vue({
   el: '#musicApp',
   data: {
-    tracks: []
+    tracks: [] // what is this for?
   },
   mounted () {
     axios
