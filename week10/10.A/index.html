@@ -9,10 +9,12 @@
     <title>Assignment 10.A</title>
 </head>
 <body>
-
-    <div id="museumApp">
-        <div>
-            <medieval-artwork v-for="work in artObjects" v-bind:artwork="work"></medieval-artwork>
+    <h1>Medieval Art at the Met</h1>
+    <div class="container">
+        <div id="museumApp">
+            <div class="artwork-container">
+                <medieval-artwork v-for="work in artObjects" v-bind:artwork="work"></medieval-artwork>
+            </div>
         </div>
     </div>
     

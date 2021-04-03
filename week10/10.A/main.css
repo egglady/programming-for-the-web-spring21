@@ -1,8 +1,34 @@
 .artwork {
     border: 1px solid red;
+    padding: 20px;
+    margin: 10px;
+    max-width: 40vw;
+    text-align: center;
 }
-
 .artwork img {
     width: 100%;
+    max-width: 350px;
+}
+.artwork-container {
+    padding: 20px;
+    margin: auto;
+    border: 1px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 70vw;
+}
+.artwork h3 {
+    max-width: 300px;
+    border: 1px solid green;
+    margin: auto;
+}
+.artist {
+    font-size: 1.2rem;
+}
+.artwork-metadata {
     max-width: 400px;
+}
+.container {
+    margin: auto;
 }
