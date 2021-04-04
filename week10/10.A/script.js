@@ -51,5 +51,5 @@ var vm = new Vue({
 
 // in index html in the div id="museumApp": 
 // artwork: the prop defined in the Vue component
-// work: self-assigned name, 
+// work: self-assigned name, created to v-bind:artwork, then use as v-for to call objects from the artObjects array and render them
 // artObjects: see in the Vue, the array in data holding the 10 art objects we sliced out of department 17
