@@ -11,10 +11,8 @@ Vue.component('medieval-artwork', {
         <p>Credit Line: {{artwork.creditLine}}</p>
         </div>
    </div>`,
-   props: ['artwork'] // I make these ones up
+ props: ['artwork'] // I make up the props names
 });
-
-
 var vm = new Vue({
   el: '#museumApp',
   data: {
@@ -26,9 +24,9 @@ var vm = new Vue({
     axios
       .get(baseUrl + '?departmentIds=17')
       .then(response => {
-        responseArray = response.data.objectIDs.slice(9, 19); // take out objects 11-20 of the objectIDs in department 17
-        for(let k = 0; k < responseArray.length; k++) {
-          axios
+        responseArray = response.data.objectIDs.slice(9, 19); // take out objects 10-20 of the objectIDs in department 17
+        for (let k = 0; k < responseArray.length; k++) {
+          axios // second get is for taking the response and adding them into the artObjects array (to display them in the vue component)
             .get(baseUrl + '/' + responseArray[k])
             .then(art => {
               console.log('art', art.data);
@@ -38,3 +36,20 @@ var vm = new Vue({
       })
   }
 });
+
+// NAME KEY
+// in the Vue:
+// response: calling the api to get all of the objectIDs in department 17
+// responseArray: take all the responses from that first API call, and putting them in this array (all 7150 objects)
+// artObjects: the array in data that's going to hold all the objects we sliced out of the response array (the 10 objects) that we're going to render on our page
+// art: take the objectIDs retrieved from the second axios GET, and as a promise, console-log it as art and add it to the artObjects array
+
+// in the Vue component:
+// medieval-artwork: component name, used in the index html for rendering the component
+// artwork: prop name that I assigned, used to v-bind in the index-html
+// title, primaryImageSmall, artistDisplayName, artistDisplayBio, medium, period, objectDate, creditLine: key names found in the public api from The Met
+
+// in index html in the div id="museumApp": 
+// artwork: the prop defined in the Vue component
+// work: self-assigned name, 
+// artObjects: see in the Vue, the array in data holding the 10 art objects we sliced out of department 17
