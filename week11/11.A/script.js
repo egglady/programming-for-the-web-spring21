@@ -33,6 +33,9 @@ function draw() {
   fill(255);
   ellipse(40, 40, 50, 50);
   fill(0);
+  // rotate in a circular motion
+  // cos calculates the x coordinate
+  // sin calculates the y coordinate
   var x = offset + cos(angle) * scalar;
   var y = offset + sin(angle) * scalar;
   ellipse(x, y, 20, 20);
@@ -41,7 +44,7 @@ function draw() {
   // eyeroll .0
   if (pct < 1.0) {
     i = startI + ((stopI - startI) * pct);
-    pct += step;
+    pct += step; // move the x of the ellipses continuously across the canvas
   }
   fill(255);
   ellipse(i, 200, 50, 50);
@@ -50,6 +53,8 @@ function draw() {
   angle2 += speed2;
 
   // eyeroll 3.0
+  // spiral
+  // decreasing scalar at each frame produces the spiral
   var m = offset3 + (cos(angle3)) * scalar3;
   var n = offset3 + (sin(angle3)) * scalar3;
   noStroke();
