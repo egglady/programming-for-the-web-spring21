@@ -19,7 +19,7 @@ var speed2 = 0.02;
 
 // vars for eyeroll 3.0
 var angle3 = 0.0;
-var offset3 = 200;
+var offset3 = 300;
 var scalar3 = -60;
 var speed3 = 0.05;
 
@@ -39,15 +39,15 @@ function draw() {
     ellipse(x, y, 20, 20);
     angle += speed;
   
-    // eyeroll 2.0
+    // eyeroll .0
     if (pct < 1.0) {
         i = startI + ((stopI - startI) * pct);
         pct += step;
     }
     fill(255);
-    ellipse(i, 350, 50, 50);
+    ellipse(i, 200, 50, 50);
     fill(0);
-    ellipse(i, y + 310, 20, 20);
+    ellipse(i, y + 160, 20, 20);
     angle2 += speed2;
 
     // eyeroll 3.0
@@ -60,6 +60,7 @@ function draw() {
     ellipse(m + 5, n + 5, 20, 20);
     angle3 += speed3;
     scalar3 += speed3;
+    // }
 }
 
 
