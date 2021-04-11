@@ -23,44 +23,42 @@ var offset3 = 300;
 var scalar3 = -60;
 var speed3 = 0.05;
 
-
 function setup() {
-    createCanvas(500, 500);
+  createCanvas(500, 500);
 }
 function draw() {
-    background(200);
-    // eyeroll 1.0
-    noStroke();
-    fill(255);
-    ellipse(40, 40, 50, 50);
-    fill(0);
-    var x = offset + cos(angle) * scalar;
-    var y = offset + sin(angle) * scalar;
-    ellipse(x, y, 20, 20);
-    angle += speed;
-  
-    // eyeroll .0
-    if (pct < 1.0) {
-        i = startI + ((stopI - startI) * pct);
-        pct += step;
-    }
-    fill(255);
-    ellipse(i, 200, 50, 50);
-    fill(0);
-    ellipse(i, y + 160, 20, 20);
-    angle2 += speed2;
+  background(200);
+  // eyeroll 1.0
+  noStroke();
+  fill(255);
+  ellipse(40, 40, 50, 50);
+  fill(0);
+  var x = offset + cos(angle) * scalar;
+  var y = offset + sin(angle) * scalar;
+  ellipse(x, y, 20, 20);
+  angle += speed;
 
-    // eyeroll 3.0
-    var m = offset3 + (cos(angle3)) * scalar3;
-    var n = offset3 + (sin(angle3)) * scalar3;
-    noStroke();
-    fill(255);
-    ellipse(m, n, 50, 50)
-    fill(0);
-    ellipse(m + 5, n + 5, 20, 20);
-    angle3 += speed3;
-    scalar3 += speed3;
-    // }
+  // eyeroll .0
+  if (pct < 1.0) {
+    i = startI + ((stopI - startI) * pct);
+    pct += step;
+  }
+  fill(255);
+  ellipse(i, 200, 50, 50);
+  fill(0);
+  ellipse(i, y + 160, 20, 20);
+  angle2 += speed2;
+
+  // eyeroll 3.0
+  var m = offset3 + (cos(angle3)) * scalar3;
+  var n = offset3 + (sin(angle3)) * scalar3;
+  noStroke();
+  fill(255);
+  ellipse(m, n, 50, 50)
+  fill(0);
+  ellipse(m + 5, n + 5, 20, 20);
+  angle3 += speed3;
+  scalar3 += speed3;
 }
 
 
