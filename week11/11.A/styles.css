@@ -1,0 +1,10 @@
+body {
+    margin: auto;
+    text-align: center;
+}
+
+h1 {
+    padding: 20px 0;
+    background-color: #222;
+    color: white;
+}
