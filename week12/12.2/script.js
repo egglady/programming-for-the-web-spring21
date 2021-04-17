@@ -28,11 +28,13 @@ function draw () {
   ellipse(250, 250, diameterX + 100, diameterY + 100);
   if (mouseIsPressed) {
     chimeSound.play();
+    fill(0, 255, 0);
   } else {
-
+   
   }
   if (keyIsPressed) {
     slackSound.play();
+    // console.log(slackSound.level);
   } else {
 
   }
