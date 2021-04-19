@@ -1,21 +1,64 @@
-function preload() {
+// FOR RECORDING
+// let mic, recorder, soundFile;
+// let state = 0;
 
+var airdropSound;
+var slackSound;
+var chimeSound;
+
+function preload() {
+    soundFormats('wav');
+    airdropSound = loadSound('audio/airdrop');
+    slackSound = loadSound('audio/slack');
+    slackSound.setVolume(0.2);
+    chimeSound = loadSound('audio/zoom_chime');
+    chimeSound.setVolume(0.2);
 }
 function setup() {
     createCanvas(windowWidth, windowHeight);
     textSize(64);
     textAlign(CENTER);
+    amplitude = new p5.Amplitude();
+
+    
+    // FOR RECORDING
+    // mic = new p5.AudioIn(); // new audio in
+    // mic.start(); // prompts user to enable browser mic
+    // recorder = new p5.SoundRecorder(); // create recorder
+    // recorder.setInput(mic); // connect recorder to mic
+    // soundFile = new p5.SoundFile(); // for saving the recording
 
 }
 function draw() {
     background('#333');
+
+    // FOR RECORDING
+    // let rec = rect(40, 50, 100, 100);
+    // // rec.mousePressed(recPressed); // see recPressed function below
+    // // text('tap this square to record', 80, 80);
+
+    // A
+    if(keyIsPressed) {
+        if (key == 'a') {
+            airdropSound.play();
+            stroke(242, 204, 12);
+            strokeWeight(8);
+        }
+    }
     fill(255, 230, 0);
     text('a', 200, 100);
-    fill(79, 53, 8);
+    if (keyIsPressed) {
+        if (key == 'b') {
+            slackSound.play();
+            stroke(79, 53, 8);
+            strokeWeight(8);
+        }
+    }
+    fill(112, 77, 17);
     text('b', 300, 100);
     fill(24, 37, 186);
     text('c', 400, 100);
-    fill(10, 7, 115);
+    fill(9, 40, 143);
     text('d', 500, 100);
     fill(232, 209, 167);
     text('e', 600, 100);
@@ -64,3 +107,47 @@ function draw() {
     fill(179, 156, 82);
     text('z', 1000, 400);
 }
+
+function mousePressed() {
+    if (mouseX >= 40 && mouseX <= 140 && mouseY >= 50 && mouseY <= 150) {
+        console.log('pressed');
+    }
+    // (40, 50, 100, 100)
+    }
+
+// FOR RECORDING
+// function recPressed() {
+//     userStartAudio();
+//     if(state === 0 && mic.enabled) {
+//         recorder.record(soundFile);
+//         background(255, 0, 0); // red = recording
+//         text('Recording', 80, 80); // 80 w/h
+//         state++;
+// } else if (state === 1) {
+//     background(0, 255, 0); // green otherwise
+//     recorder.stop();
+//     text('Done recording. Tap to play and download', 80, 80); // 80 w/h
+//     state++;
+// } else if (state === 2) {
+//     soundFile.play(); // play the created recording
+//     save(soundFile, 'mySound.wav');
+//     state++;
+// }
+// }
+
+
+// https://p5js.org/reference/#/p5.SoundRecorder
+
+
+
+
+
+
+
+
+
+
+
+
+// need to create a class (like the card flip) in a situation where you want to reuse the same thing
+// ! = bang, negates what immediately comes after it (a good way to turn the sound off in a mousePressed
