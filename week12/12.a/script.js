@@ -12,7 +12,6 @@ var successSound;
 var twinkleSound;
 var whooshSound;
 
-
 function preload() {
   soundFormats('wav');
   auroraSound = loadSound('audio/aurora');
@@ -32,7 +31,7 @@ function preload() {
   whooshSound = loadSound('audio/whoosh');
 }
 function setup() {
-  createCanvas(1200, 520);
+  createCanvas(1200, 500);
   textSize(84);
   textAlign(CENTER);
   amplitude = new p5.Amplitude;
@@ -45,7 +44,7 @@ function draw() {
   fill(255, 230, 0);
   text('a', 200, 100);
   // B
-  fill(112, 77, 17);
+  fill(130, 69, 4);
   text('b', 300, 100);
   // C
   fill(24, 37, 186);
@@ -60,7 +59,7 @@ function draw() {
   fill(186, 128, 20);
   text('f', 700, 100);
   // G
-  fill(44, 112, 21);
+  fill(5, 51, 2);
   text('g', 800, 100);
   // H
   fill(222, 66, 9);
@@ -79,23 +78,23 @@ function draw() {
   fill(204);
   text('l', 450, 250);
   // M
-  fill(145, 42, 15);
+  fill(173, 35, 10);
   text('m', 550, 250);
   // N
-  fill(199, 63, 28);
+  fill(222, 95, 35);
   text('n', 650, 250);
   // O
   fill(0);
   text('o', 750, 250);
   // P
-  fill(66, 130, 119);
+  fill(31, 148, 128);
   text('p', 850, 250);
   // Q
-  fill(37, 97, 115);
+  fill(10, 100, 128);
   text('q', 950, 250);
   //
   // R
-  fill(9, 143, 22);
+  fill(24, 122, 6);
   text('r', 200, 400);
   // S
   fill(150, 36, 103);
@@ -110,10 +109,10 @@ function draw() {
   fill(185, 187, 237);
   text('v', 600, 400);
   // W
-  fill(105, 87, 100);
+  fill(61, 48, 59);
   text('w', 700, 400);
   // X
-  fill(95);
+  fill(115, 105, 105);
   text('x', 800, 400);
   // Y
   fill(222, 80, 189);
@@ -121,12 +120,10 @@ function draw() {
   // Z
   fill(179, 156, 82);
   text('z', 1000, 400);
-
   // for the highlighted letters
   fill(255);
   strokeWeight(8);
   stroke(0);
-
   // for what letters get highlighted while sound is playing
   // AURORA - R & N
   if (auroraSound.isPlaying() === true) {
@@ -194,7 +191,6 @@ function draw() {
     text('z', 1000, 400);
   }
 }
-
 function keyPressed() {
   if ((key == 'r') || (key == 'n')) {
     auroraSound.play();
@@ -236,19 +232,3 @@ function keyPressed() {
     whooshSound.play()
   }
 }
-
-// https://p5js.org/reference/#/p5.SoundRecorder
-
-
-
-
-
-
-
-
-
-
-
-
-// need to create a class (like the card flip) in a situation where you want to reuse the same thing
-// ! = bang, negates what immediately comes after it (a good way to turn the sound off in a mousePressed

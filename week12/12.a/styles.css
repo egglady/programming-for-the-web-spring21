@@ -5,17 +5,19 @@
 body {
     margin: auto;
     text-align: center;
+    background-color: #EAF6FA;
 }
 html {
     font-family: var(--display-font);
 }
 h1 {
     font-size: 3.2rem;
+    margin: 1rem 0;
 }
 p {
     font-family: var(--main-font);
     font-size: 1.2rem;
     margin: auto;
-    max-width: 500px;
+    max-width: 520px;
     padding: 12px;
 }
