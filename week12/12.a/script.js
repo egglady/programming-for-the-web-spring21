@@ -12,7 +12,6 @@ var successSound;
 var twinkleSound;
 var whooshSound;
 
-var level;
 
 function preload() {
   soundFormats('wav');
@@ -33,7 +32,7 @@ function preload() {
   whooshSound = loadSound('audio/whoosh');
 }
 function setup() {
-  createCanvas(1200, 600);
+  createCanvas(1200, 520);
   textSize(84);
   textAlign(CENTER);
   amplitude = new p5.Amplitude;

@@ -1,0 +1,21 @@
+:root {
+    --display-font: "Train One", sans-serif;
+    --main-font: "Roboto Slab", sans-serif;
+}
+body {
+    margin: auto;
+    text-align: center;
+}
+html {
+    font-family: var(--display-font);
+}
+h1 {
+    font-size: 3.2rem;
+}
+p {
+    font-family: var(--main-font);
+    font-size: 1.2rem;
+    margin: auto;
+    max-width: 500px;
+    padding: 12px;
+}
