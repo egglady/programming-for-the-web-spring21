@@ -23,7 +23,7 @@ function setup() {
     armLength = 250;
     origin = createVector(400, 300);
     slider = createSlider(0, 2, 0.05, 0.05); // first 0.05  is default, second is the step
-
+    slider.position(75, 320)
     slider.style('width', '200px')
 }
 
