@@ -8,6 +8,7 @@ body {
 .header {
     width: 250px;
     padding: 20px;
+    margin-right: 2rem;
     min-width: 220px;
     color: rgb(212, 61, 32);
     font-size: 1.2rem;
