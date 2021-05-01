@@ -56,14 +56,6 @@ function draw() {
     curveVertex(362, 145); //
     curveVertex(362, 145); //
     endShape();
-    
-
-//     beginShape();
-//     curveVertex(365, 110);
-//     curveVertex(367, 90);
-//     curveVertex(372, 70);
-//     curveVertex(370, 60);
-//     endShape();
 }
 
 
