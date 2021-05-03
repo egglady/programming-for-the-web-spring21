@@ -1,8 +1,42 @@
+// audio variables
+var kiki;
+var bouba;
+var takete;
+var maluma;
+var kitiki;
+var lomba;
+var nooma;
+var piki;
+var kate;
+var molly;
+var tucker;
+var ben;
+var kira;
+var gunner;
+
+
+function preload() {
+    soundFormats('wav');
+    kikiSound = loadSound('audio/kiki');
+    boubaSound = loadSound('audio/bouba');
+    taketeSound = loadSound('audio/takete');
+    malumaSound = loadSound('audio/maluma');
+    kitikiSound = loadSound('audio/kitiki');
+    lombaSound = loadSound('audio/lomba');
+    noomaSound = loadSound('audio/nooma');
+    pikiSound = loadSound('audio/piki');
+    kateSound = loadSound('audio/kate');
+    mollySound = loadSound('audio/molly');
+    tuckerSound = loadSound('audio/tucker');
+    benSound = loadSound('audio/ben');
+    kiraSound = loadSound('audio/kira');
+    gunnerSound = loadSound('audio/gunner');
+}
+
 function setup() {
     createCanvas(600, 400);
     background(200);
 }
-
 function draw() {
     // kiki
     beginShape();
@@ -22,7 +56,6 @@ function draw() {
     vertex(115, 145);
     vertex(100, 100);
     endShape();
-
     // bouba
     beginShape();
     curveVertex(362, 145); //
@@ -56,6 +89,6 @@ function draw() {
     curveVertex(362, 145); //
     curveVertex(362, 145); //
     endShape();
+
+    
 }
-
-
