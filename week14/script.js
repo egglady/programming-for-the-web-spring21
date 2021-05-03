@@ -89,6 +89,4 @@ function draw() {
     curveVertex(362, 145); //
     curveVertex(362, 145); //
     endShape();
-
-    
 }

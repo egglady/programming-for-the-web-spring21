@@ -5,7 +5,7 @@ const va = new Vue ({
     lastName: '',
     street: '',
     city: '',
-    states: 'NJ',
+    state: 'NJ',
     availableStates: [
       { value: 'AL', name: 'Alabama' },
       { value: 'AK', name: 'Alaska' },
