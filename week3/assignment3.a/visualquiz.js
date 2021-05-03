@@ -60,7 +60,7 @@ function startOver () {
 
 currentQuestion = next();
 let message = currentQuestion.question;
-// console.log(next());
+console.log(next());
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
