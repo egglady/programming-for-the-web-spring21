@@ -38,6 +38,8 @@ function setup() {
   submitAnswerButton.position(225, 600);
 //  submitAnswerButton.mousePressed(function to add to results);
 }
+
+
 function draw() {
   // left
   leftShape.show();
