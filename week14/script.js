@@ -1,5 +1,6 @@
 var leftShape;
 var rightShape;
+let submitAnswerButton;
 
 let shapeQuiz = [
   {question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba'},
@@ -46,37 +47,41 @@ function draw() {
   // right
   rightShape.show();
 }
-// function clicked () {
-//     let d = dist(mouseX, mouseY, this.x, this.y)
-//     if (d < this.r) {
-//         console.log('clicked');
-//     }
-// }
 
 function mousePressed() {
-  leftShape.clicked();
+ leftShape.clicked();
 }
 class Left {
-  consructor() {
+  consructor(x, y, r) {
+    this.x = 150;
+    this.y = 200;
+    this.r = 100;
     this.show();
   }
+  clicked() {
+    let d = dist(mouseX, mouseY, this.x, this.y)
+    if (d < this.r) {
+        console.log('clicked');
+    }
+}
   show() {
-    beginShape();
-    vertex(90, 90);
-    vertex(130, 122);
-    vertex(185, 50);
-    vertex(165, 145);
-    vertex(230, 140);
-    vertex(175, 172);
-    vertex(230, 230);
-    vertex(155, 200);
-    vertex(135, 280);
-    vertex(125, 195);
-    vertex(50, 235);
-    vertex(100, 180);
-    vertex(30, 135);
-    vertex(110, 145);
-    endShape(CLOSE);
+      ellipse(this.x, this.y, this.r * 2);
+    // beginShape();
+    // vertex(90, 90);
+    // vertex(130, 122);
+    // vertex(185, 50);
+    // vertex(165, 145);
+    // vertex(230, 140);
+    // vertex(175, 172);
+    // vertex(230, 230);
+    // vertex(155, 200);
+    // vertex(135, 280);
+    // vertex(125, 195);
+    // vertex(50, 235);
+    // vertex(100, 180);
+    // vertex(30, 135);
+    // vertex(110, 145);
+    // endShape(CLOSE);
   }
 }
 
