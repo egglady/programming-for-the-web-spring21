@@ -1,6 +1,7 @@
 var leftShape;
 var rightShape;
 let submitAnswerButton;
+let startOverButton;
 
 let shapeQuiz = [
   {question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba'},
@@ -18,6 +19,7 @@ function next () {
     location.reload;
     return;
   }
+  // If I don't want to randomize the questions, what should I put?
   const randomIdx = Math.ceil(Math.random() * shapeQuiz.length - 1);
   return shapeQuiz[randomIdx];
 }
@@ -38,6 +40,10 @@ function setup() {
   submitAnswerButton.size(150, 30);
   submitAnswerButton.position(225, 600);
 //  submitAnswerButton.mousePressed(function to add to results);
+startOverButton= createButton('Start Over');
+startOverButton.size(150, 30);
+startOverButton.mousePressed(startOver);
+startOverButton.position(250, 50);
 }
 
 
