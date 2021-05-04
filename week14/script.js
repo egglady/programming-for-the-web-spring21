@@ -1,38 +1,3 @@
-// // audio variables
-// var kiki;
-// var bouba;
-// var takete;
-// var maluma;
-// var kitiki;
-// var lomba;
-// var nooma;
-// var piki;
-// var kate;
-// var molly;
-// var tucker;
-// var ben;
-// var kira;
-// var gunner;
-
-
-// function preload() {
-//     soundFormats('wav');
-//     kikiSound = loadSound('audio/kiki');
-//     boubaSound = loadSound('audio/bouba');
-//     taketeSound = loadSound('audio/takete');
-//     malumaSound = loadSound('audio/maluma');
-//     kitikiSound = loadSound('audio/kitiki');
-//     lombaSound = loadSound('audio/lomba');
-//     noomaSound = loadSound('audio/nooma');
-//     pikiSound = loadSound('audio/piki');
-//     kateSound = loadSound('audio/kate');
-//     mollySound = loadSound('audio/molly');
-//     tuckerSound = loadSound('audio/tucker');
-//     benSound = loadSound('audio/ben');
-//     kiraSound = loadSound('audio/kira');
-//     gunnerSound = loadSound('audio/gunner');
-// }
-
 var leftShape;
 var rightShape;
 
@@ -78,30 +43,44 @@ function draw() {
     // left
     leftShape.show();
     // right
-   rightShape.show();
+    rightShape.show();
+    // fill(255, 0, 0);
+    // ellipse(135, 160, 135, 135);
 }
 
+function clicked () {
+    let d = dist(mouseX, mouseY, this.x, this.y)
+    if (d < this.r) {
+        console.log('clicked');
+    }
+}
 
+function mousePressed() {
+    leftShape.clicked();
+}
 class Left {
-    consructor()  {
+    consructor(x, y, r) {
+        this.x = 135;
+        this.y = 160;
+        this.r = 67.5;
         this.show();
     }
     show() {
         beginShape();
-        vertex(100, 100);
+        vertex(90, 90);
         vertex(130, 122);
-        vertex(175, 60);
-        vertex(160, 145);
-        vertex(220, 142);
-        vertex(170, 170);
-        vertex(215, 220);
-        vertex(150, 195);
-        vertex(130, 250);
-        vertex(125, 190);
-        vertex(55, 225);
-        vertex(105, 168);
+        vertex(185, 50);
+        vertex(165, 145);
+        vertex(230, 140);
+        vertex(175, 172);
+        vertex(230, 230);
+        vertex(155, 200);
+        vertex(135, 280);
+        vertex(125, 195);
+        vertex(50, 235);
+        vertex(100, 180);
         vertex(30, 135);
-        vertex(115, 145);
+        vertex(110, 145);
         endShape(CLOSE);
     }
 }
