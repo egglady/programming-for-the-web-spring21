@@ -11,7 +11,6 @@ let startOverButton;
 let message = '';
 let currentQuestion = 0;
 
-
 let shapeQuiz = [
   {question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba'},
   {question: 'Which shape is called takete and which is called maluma?', first: 'Click on takete', second: 'Click on maluma'},
@@ -28,9 +27,6 @@ function next () {
     location.reload;
     return;
   }
-  // If I don't want to randomize the questions, what should I put?
-  const randomIdx = Math.ceil(Math.random() * shapeQuiz.length - 1);
-  return shapeQuiz[randomIdx];
 }
 // function ask(questionNumber) {
 //     const response = 
@@ -45,13 +41,16 @@ function startOver () {
 
 function setup() {
   createCanvas(600, 600);
+  textFont('Lato');
+  textSize(16);
+  textAlign(CENTER);
   leftShape = new Left();
   rightShape = new Right();
   submitAnswerButton = createButton('Submit');
-  submitAnswerButton.size(150, 30);
-  submitAnswerButton.position(225, 600);
+  submitAnswerButton.size(CENTER, 30);
+  submitAnswerButton.position(CENTER, 600);
   submitAnswerButton.mousePressed(function () {
-     currentQuestion++;
+  currentQuestion++; // function to be eventHandler to update quiz state and move to next question until finish for eventHandler
  });
   startOverButton = createButton('Start Over');
   startOverButton.size(150, 30);
@@ -59,22 +58,34 @@ function setup() {
   startOverButton.position(250, 50);
 }
 function draw() {
-    background(200);
+  background(200);
   // left
   leftShape.show(leftColor);
   // right
   rightShape.show(rightColor);
-  text(message, 200, 400, 500, 300)
-  text(command, 200, 450, 500, 300);
+  text(message, 45, 400, 500, 300)
+  text(command, 45, 440, 500, 300);
   if (quizState === 'initialize') {
-      // stop the loop of draw
-      // ask the question
-      // set quiz state to question
+    // stop the loop of draw
+    // ask the question
+    // set quiz state to question
   }
   if (quizState === 'question') {
     // display question as message
     message = shapeQuiz[currentQuestion].question;
+    // display first command
+    // register click as leftShape or rightShape
     command = shapeQuiz[currentQuestion][whichShape];
+    // display second command
+    // register click as leftShape or rightShape
+  }
+  if (quizState === 'submit') {
+    // add answers for first and second command to responseArray (make the submitButton an event Handler
+    // return to quizState question with next idx in shapeQuiz array
+  
+  }
+  if (quizState === 'finish') {
+    //
   }
 }
 
@@ -95,7 +106,6 @@ function mousePressed() {
 
 class Left {
   constructor() {
-    // this.show('red');
     this.color = 'red';
   }
   show(myColor) {
@@ -124,13 +134,12 @@ class Left {
 
 class Right {
   constructor() {
-    // this.show();
     this.color = 'pink';
   }
   show(myColor) {
     console.log(this.color);
-      push();
-      fill(myColor);
+    push();
+    fill(myColor);
     beginShape();
     curveVertex(362, 145); //
     curveVertex(362, 145); //
