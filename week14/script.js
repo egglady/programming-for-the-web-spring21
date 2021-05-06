@@ -1,7 +1,16 @@
+var quizState = 'question';
 var leftShape;
 var rightShape;
+var leftColor = 'red';
+var rightColor = 'pink';
+var responseArray = [];
+let command = '';
+let whichShape = 'first';
 let submitAnswerButton;
 let startOverButton;
+let message = '';
+let currentQuestion = 0;
+
 
 let shapeQuiz = [
   {question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba'},
@@ -23,79 +32,105 @@ function next () {
   const randomIdx = Math.ceil(Math.random() * shapeQuiz.length - 1);
   return shapeQuiz[randomIdx];
 }
+// function ask(questionNumber) {
+//     const response = 
+// }
 function startOver () {
   location.reload();
   return;
 }
-currentQuestion = next();
-let message = currentQuestion.question;
-console.log(next());
+// currentQuestion = next();
+// message = currentQuestion.question;
+// console.log(next());
 
 function setup() {
   createCanvas(600, 600);
-  background(200);
   leftShape = new Left();
   rightShape = new Right();
   submitAnswerButton = createButton('Submit');
   submitAnswerButton.size(150, 30);
   submitAnswerButton.position(225, 600);
-//  submitAnswerButton.mousePressed(function to add to results);
-startOverButton= createButton('Start Over');
-startOverButton.size(150, 30);
-startOverButton.mousePressed(startOver);
-startOverButton.position(250, 50);
+  submitAnswerButton.mousePressed(function () {
+     currentQuestion++;
+ });
+  startOverButton = createButton('Start Over');
+  startOverButton.size(150, 30);
+  startOverButton.mousePressed(startOver);
+  startOverButton.position(250, 50);
 }
-
-
 function draw() {
+    background(200);
   // left
-  leftShape.show();
+  leftShape.show(leftColor);
   // right
-  rightShape.show();
+  rightShape.show(rightColor);
+  text(message, 200, 400, 500, 300)
+  text(command, 200, 450, 500, 300);
+  if (quizState === 'initialize') {
+      // stop the loop of draw
+      // ask the question
+      // set quiz state to question
+  }
+  if (quizState === 'question') {
+    // display question as message
+    message = shapeQuiz[currentQuestion].question;
+    command = shapeQuiz[currentQuestion][whichShape];
+  }
 }
 
 function mousePressed() {
- leftShape.clicked();
-}
-class Left {
-  consructor(x, y, r) {
-    this.x = 150;
-    this.y = 200;
-    this.r = 100;
-    this.show();
-  }
-  clicked() {
-    let d = dist(mouseX, mouseY, this.x, this.y)
-    if (d < this.r) {
-        console.log('clicked');
+    if (mouseX > 25 && mouseX < 250 && mouseY > 50 && mouseY < 300) {
+        leftColor = 'blue';
+        whichShape = 'second';
+    } else {
+        leftColor = 'red';
+    }
+    if (mouseX > 305 && mouseX < 525 && mouseY > 65 && mouseY < 300) {
+        rightColor = 'green';
+    } else {
+        rightColor = 'pink';
     }
 }
-  show() {
-      ellipse(this.x, this.y, this.r * 2);
-    // beginShape();
-    // vertex(90, 90);
-    // vertex(130, 122);
-    // vertex(185, 50);
-    // vertex(165, 145);
-    // vertex(230, 140);
-    // vertex(175, 172);
-    // vertex(230, 230);
-    // vertex(155, 200);
-    // vertex(135, 280);
-    // vertex(125, 195);
-    // vertex(50, 235);
-    // vertex(100, 180);
-    // vertex(30, 135);
-    // vertex(110, 145);
-    // endShape(CLOSE);
+
+
+class Left {
+  constructor() {
+    // this.show('red');
+    this.color = 'red';
+  }
+  show(myColor) {
+    console.log(this.color);
+    push();
+    fill(myColor);
+    beginShape();
+    vertex(80, 80);
+    vertex(130, 122);
+    vertex(185, 50);
+    vertex(165, 145);
+    vertex(245, 130);
+    vertex(175, 172);
+    vertex(250, 240);
+    vertex(160, 205);
+    vertex(130, 300);
+    vertex(120, 205);
+    vertex(50, 235);
+    vertex(100, 180);
+    vertex(25, 135);
+    vertex(105, 140);
+    endShape(CLOSE);
+    pop();
   }
 }
 
 class Right {
   constructor() {
-    this.show();
+    // this.show();
+    this.color = 'pink';
   }
-  show() {
+  show(myColor) {
+    console.log(this.color);
+      push();
+      fill(myColor);
     beginShape();
     curveVertex(362, 145); //
     curveVertex(362, 145); //
@@ -127,5 +162,6 @@ class Right {
     curveVertex(325, 125);
     curveVertex(362, 145); //
     endShape(CLOSE);
+    pop();
   }
 }
