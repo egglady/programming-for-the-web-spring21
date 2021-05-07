@@ -1,18 +1,16 @@
 var quizState = {
-    state: 0, // initialize, question, next answer, complete, display record
-    currentQuestionIndex: 0
+  state: 0, // initialize, question, next answer, complete, display record
+  currentQuestionIndex: 0
 }
 var responseArray = []; // answers recorded here
 var leftShape;
 var rightShape;
 var leftColor = 'red';
 var rightColor = 'pink';
-let command = '';
-let whichShape = 'first';
+
+let startButton;
 let submitAnswerButton;
 let startOverButton;
-let message = '';
-let currentQuestion = 0;
 
 let shapeQuiz = [
   {question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba', name: 'Kiki vs. Bouba'},
@@ -31,31 +29,26 @@ function next () {
     return;
   }
 }
-// function ask(questionNumber) {
-//     const response = 
-// }
 function startOver () {
   location.reload();
   return;
 }
-// currentQuestion = next();
-// message = currentQuestion.question;
-// console.log(next());
-
+function startQuiz() {
+  quizState.state = 1; // moves to question state
+}
 function setup() {
-  let cvn = createCanvas(600, 600);
+  createCanvas(600, 600);
   textFont('Lato');
   textSize(16);
   textAlign(CENTER);
   leftShape = new Left();
   rightShape = new Right();
   startButton = createButton('Start');
-  startButton.position((width/2) - (startButton.width/2), height/2 - (startButton.height/2));
+  startButton.position((width / 2) - (startButton.width / 2), height / 2 - (startButton.height / 2));
   startButton.mousePressed(startQuiz);
   submitAnswerButton = createButton('Submit');
   submitAnswerButton.size(150, 30);
-  submitAnswerButton.position((cvn.width / 2) - (submitAnswerButton.width / 2), 600);
-  // currentQuestion++; do i no longer need this?
+  submitAnswerButton.position((width / 2) - (submitAnswerButton.width / 2), 600);
   startOverButton = createButton('Start Over');
   startOverButton.size(150, 30);
   startOverButton.mousePressed(startOver);
@@ -63,9 +56,7 @@ function setup() {
 }
 function draw() {
   background(200);
-
-  text(message, 45, 400, 500, 300)
-  text(command, 45, 440, 500, 300);
+  // first state: after initialization, show the shapes and the quiz question
   if (quizState.state > 0 && quizState.state < 3) {
       // left
     leftShape.show(leftColor);
@@ -100,23 +91,20 @@ function draw() {
     // show all results in responseArray 
   }
 }
-function startQuiz() {
-  quizState.state = 1; // moves to question state
-
-}
 
 function mousePressed() {
-    if (mouseX > 25 && mouseX < 250 && mouseY > 50 && mouseY < 300) {
-        leftColor = 'blue';
-        whichShape = 'second';
-    } else {
-        leftColor = 'red';
-    }
-    if (mouseX > 305 && mouseX < 525 && mouseY > 65 && mouseY < 300) {
-        rightColor = 'green';
-    } else {
-        rightColor = 'pink';
-    }
+  if (mouseX > 25 && mouseX < 250 && mouseY > 50 && mouseY < 300 && quizState.state > 0) {
+    responseArray(leftShape);
+    leftColor = 'blue';
+  } else {
+    leftColor = 'red';
+  }
+  if (mouseX > 305 && mouseX < 525 && mouseY > 65 && mouseY < 300 && quizState.state > 0) {
+    responseArray(rightShape);
+    rightColor = 'green';
+  } else {
+    rightColor = 'pink';
+  }
 }
 
 function recordResponses() {
@@ -129,10 +117,21 @@ function recordResponses() {
     order = 'second';
 }
   responseArray.push('You chose' + shapeQuiz[quizState.currentquestionIndex][order] + 'for' + shapeQuiz[quizState.currentQuestionIndex].name);
+  if (shapeQuiz[quizState.currentQuestionIndex + 1] !== undefined) {
+    if (order === 'first') {
+      quizState.state = 2;
+    } else if (order === 'second') {
+      quizState.currentQuestionIndex++;
+      quizState.state = 1;
+    }
+  } else {
+    quizState.state = 3; // no more questions in Array, move to show responses
+  }
 }
 class Left {
-  constructor() {
+  constructor(left) {
     this.color = 'red';
+    this.name = left;
   }
   show(myColor) {
     console.log(this.color);
@@ -159,8 +158,9 @@ class Left {
 }
 
 class Right {
-  constructor() {
+  constructor(right) {
     this.color = 'pink';
+    this.name = right;
   }
   show(myColor) {
     console.log(this.color);
