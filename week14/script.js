@@ -1,9 +1,12 @@
-var quizState = 'question';
+var quizState = {
+    state: 0, // initialize, question, next answer, complete, display record
+    currentQuestionIndex: 0
+}
+var responseArray = []; // answers recorded here
 var leftShape;
 var rightShape;
 var leftColor = 'red';
 var rightColor = 'pink';
-var responseArray = [];
 let command = '';
 let whichShape = 'first';
 let submitAnswerButton;
@@ -12,13 +15,13 @@ let message = '';
 let currentQuestion = 0;
 
 let shapeQuiz = [
-  {question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba'},
-  {question: 'Which shape is called takete and which is called maluma?', first: 'Click on takete', second: 'Click on maluma'},
-  {question: 'Which shape is called kitiki and which is called lomba?', first: 'Click on kitki', second: 'Click on lomba'},
-  {question: 'Which shape is called piki and which is called nooma?', first: 'Click on piki', second: 'Click on nooma'},
-  {question: 'Which shape is named Kate and which is named Molly?', first: 'Click on Kate', second: 'Click on Molly' },
-  {question: 'Which shape is named Tucker and which is named Ben?', first: 'Click on Tucker', second: 'Click on Ben'},
-  {question: 'Which shape is named Kira and which is named Gunner?', first: 'Click on Kira', second: 'Click on Gunner'}
+  {question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba', name: 'Kiki vs. Bouba'},
+  {question: 'Which shape is called takete and which is called maluma?', first: 'Click on takete', second: 'Click on maluma', name: 'Takete vs. Maluma'},
+  {question: 'Which shape is called kitiki and which is called lomba?', first: 'Click on kitki', second: 'Click on lomba', name: 'Kitiki vs. Lomba'},
+  {question: 'Which shape is called piki and which is called nooma?', first: 'Click on piki', second: 'Click on nooma', name: 'Piki vs. Nooma'},
+  {question: 'Which shape is named Kate and which is named Molly?', first: 'Click on Kate', second: 'Click on Molly', name: 'Kate vs. Molly' },
+  {question: 'Which shape is named Tucker and which is named Ben?', first: 'Click on Tucker', second: 'Click on Ben', name: 'Tucker vs. Ben'},
+  {question: 'Which shape is named Kira and which is named Gunner?', first: 'Click on Kira', second: 'Click on Gunner', name: 'Kira vs. Gunner'}
 ];
 
 function next () {
@@ -40,18 +43,19 @@ function startOver () {
 // console.log(next());
 
 function setup() {
-  createCanvas(600, 600);
+  let cvn = createCanvas(600, 600);
   textFont('Lato');
   textSize(16);
   textAlign(CENTER);
   leftShape = new Left();
   rightShape = new Right();
+  startButton = createButton('Start');
+  startButton.position((width/2) - (startButton.width/2), height/2 - (startButton.height/2));
+  startButton.mousePressed(startQuiz);
   submitAnswerButton = createButton('Submit');
-  submitAnswerButton.size(CENTER, 30);
-  submitAnswerButton.position(CENTER, 600);
-  submitAnswerButton.mousePressed(function () {
-  currentQuestion++; // function to be eventHandler to update quiz state and move to next question until finish for eventHandler
- });
+  submitAnswerButton.size(150, 30);
+  submitAnswerButton.position((cvn.width / 2) - (submitAnswerButton.width / 2), 600);
+  // currentQuestion++; do i no longer need this?
   startOverButton = createButton('Start Over');
   startOverButton.size(150, 30);
   startOverButton.mousePressed(startOver);
@@ -59,34 +63,46 @@ function setup() {
 }
 function draw() {
   background(200);
-  // left
-  leftShape.show(leftColor);
-  // right
-  rightShape.show(rightColor);
+
   text(message, 45, 400, 500, 300)
   text(command, 45, 440, 500, 300);
-  if (quizState === 'initialize') {
+  if (quizState.state > 0 && quizState.state < 3) {
+      // left
+    leftShape.show(leftColor);
+    // right
+    rightShape.show(rightColor);
+    text(shapeQuiz[quizState.currentQuestionIndex].question, 0, 400, width, 300)
     // stop the loop of draw
     // ask the question
     // set quiz state to question
   }
-  if (quizState === 'question') {
-    // display question as message
-    message = shapeQuiz[currentQuestion].question;
-    // display first command
-    // register click as leftShape or rightShape
-    command = shapeQuiz[currentQuestion][whichShape];
-    // display second command
-    // register click as leftShape or rightShape
+  if (quizState.state === 1) {
+    text(shapeQuiz[quizState.currentQuestionIndex].first, 0, 450, width, 400)
+
+    // // display question as message
+    // message = shapeQuiz[currentQuestion].question;
+    // // display first command
+    // // register click as leftShape or rightShape
+    // command = shapeQuiz[currentQuestion][whichShape];
+    // // display second command
+    // // register click as leftShape or rightShape
   }
-  if (quizState === 'submit') {
+  if (quizState === 2) {
+    text(shapeQuiz[quizState.currentQuestionIndex].second, 0, 300, width, 400)
     // add answers for first and second command to responseArray (make the submitButton an event Handler
     // return to quizState question with next idx in shapeQuiz array
-  
   }
-  if (quizState === 'finish') {
-    //
+  if (quizState === 3) {
+    text("Complete!", 10, 10);
+    text(responseArray.join(','), 50, 50, 100, width - 50)
+    // end quizState question and quizState response loop
+    // indicate that quiz is complete
+    // show all results in responseArray 
   }
+}
+function startQuiz() {
+  quizState.state = 1; // moves to question state
+
 }
 
 function mousePressed() {
@@ -103,7 +119,17 @@ function mousePressed() {
     }
 }
 
-
+function recordResponses() {
+  // to push responses into responseArray
+  let order;
+  if (quizState.state === 1) {
+    order = 'first'; 
+  }
+  if (quizState.state === 2) {
+    order = 'second';
+}
+  responseArray.push('You chose' + shapeQuiz[quizState.currentquestionIndex][order] + 'for' + shapeQuiz[quizState.currentQuestionIndex].name);
+}
 class Left {
   constructor() {
     this.color = 'red';
