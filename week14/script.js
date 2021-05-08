@@ -13,18 +13,17 @@ let submitAnswerButton;
 let startOverButton;
 
 let shapeQuiz = [
-  {question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba', name: 'Kiki vs. Bouba'},
-  {question: 'Which shape is called takete and which is called maluma?', first: 'Click on takete', second: 'Click on maluma', name: 'Takete vs. Maluma'},
-  {question: 'Which shape is called kitiki and which is called lomba?', first: 'Click on kitki', second: 'Click on lomba', name: 'Kitiki vs. Lomba'},
-  {question: 'Which shape is called piki and which is called nooma?', first: 'Click on piki', second: 'Click on nooma', name: 'Piki vs. Nooma'},
-  {question: 'Which shape is named Kate and which is named Molly?', first: 'Click on Kate', second: 'Click on Molly', name: 'Kate vs. Molly' },
-  {question: 'Which shape is named Tucker and which is named Ben?', first: 'Click on Tucker', second: 'Click on Ben', name: 'Tucker vs. Ben'},
-  {question: 'Which shape is named Kira and which is named Gunner?', first: 'Click on Kira', second: 'Click on Gunner', name: 'Kira vs. Gunner'}
+  {question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba', title: 'Kiki vs. Bouba'},
+  {question: 'Which shape is called takete and which is called maluma?', first: 'Click on takete', second: 'Click on maluma', title: 'Takete vs. Maluma'},
+  {question: 'Which shape is called kitiki and which is called lomba?', first: 'Click on kitki', second: 'Click on lomba', title: 'Kitiki vs. Lomba'},
+  {question: 'Which shape is called piki and which is called nooma?', first: 'Click on piki', second: 'Click on nooma', title: 'Piki vs. Nooma'},
+  {question: 'Which shape is named Kate and which is named Molly?', first: 'Click on Kate', second: 'Click on Molly', title: 'Kate vs. Molly' },
+  {question: 'Which shape is named Tucker and which is named Ben?', first: 'Click on Tucker', second: 'Click on Ben', title: 'Tucker vs. Ben'},
+  {question: 'Which shape is named Kira and which is named Gunner?', first: 'Click on Kira', second: 'Click on Gunner', title: 'Kira vs. Gunner'}
 ];
 
 function next () {
   if (shapeQuiz.length < 1) {
-    window.alert('Check out your results below');
     location.reload;
     return;
   }
@@ -32,9 +31,6 @@ function next () {
 function startOver () {
   location.reload();
   return;
-}
-function startQuiz() {
-  quizState.state = 1; // moves to question state
 }
 function setup() {
   createCanvas(600, 600);
@@ -63,20 +59,9 @@ function draw() {
     // right
     rightShape.show(rightColor);
     text(shapeQuiz[quizState.currentQuestionIndex].question, 0, 400, width, 300)
-    // stop the loop of draw
-    // ask the question
-    // set quiz state to question
   }
   if (quizState.state === 1) {
     text(shapeQuiz[quizState.currentQuestionIndex].first, 0, 450, width, 400)
-
-    // // display question as message
-    // message = shapeQuiz[currentQuestion].question;
-    // // display first command
-    // // register click as leftShape or rightShape
-    // command = shapeQuiz[currentQuestion][whichShape];
-    // // display second command
-    // // register click as leftShape or rightShape
   }
   if (quizState === 2) {
     text(shapeQuiz[quizState.currentQuestionIndex].second, 0, 300, width, 400)
@@ -91,15 +76,18 @@ function draw() {
     // show all results in responseArray 
   }
 }
+function startQuiz() {
+  quizState.state = 1; // moves to question state
+}
 
 function mousePressed() {
-  if (mouseX > 25 && mouseX < 250 && mouseY > 50 && mouseY < 300 && quizState.state > 0) {
+  if ((mouseX > 25 && mouseX < 250 && mouseY > 50 && mouseY < 300) && quizState.state > 0) {
     responseArray(leftShape);
     leftColor = 'blue';
   } else {
     leftColor = 'red';
   }
-  if (mouseX > 305 && mouseX < 525 && mouseY > 65 && mouseY < 300 && quizState.state > 0) {
+  if ((mouseX > 305 && mouseX < 525 && mouseY > 65 && mouseY < 300) && quizState.state > 0) {
     responseArray(rightShape);
     rightColor = 'green';
   } else {
@@ -107,7 +95,7 @@ function mousePressed() {
   }
 }
 
-function recordResponses() {
+function recordResponses(shape) {
   // to push responses into responseArray
   let order;
   if (quizState.state === 1) {
@@ -115,19 +103,21 @@ function recordResponses() {
   }
   if (quizState.state === 2) {
     order = 'second';
-}
-  responseArray.push('You chose' + shapeQuiz[quizState.currentquestionIndex][order] + 'for' + shapeQuiz[quizState.currentQuestionIndex].name);
+  }
+  responseArray.push('For ' + shapeQuiz[quizState.currentQuestionIndex].title + ', you chose' + shapeQuiz[quizState.currentquestionIndex][order]);
+
   if (shapeQuiz[quizState.currentQuestionIndex + 1] !== undefined) {
     if (order === 'first') {
       quizState.state = 2;
     } else if (order === 'second') {
       quizState.currentQuestionIndex++;
-      quizState.state = 1;
+      quizState.state = 1; //
     }
   } else {
     quizState.state = 3; // no more questions in Array, move to show responses
   }
 }
+
 class Left {
   constructor(left) {
     this.color = 'red';
