@@ -18,30 +18,30 @@ const shapeQuiz = [
   { question: 'Which shape is called piki and which is called nooma?', first: 'Click on piki', second: 'Click on nooma', title: 'Piki vs. Nooma', firstName: 'piki', secondName: 'nooma' },
   { question: 'Which shape is named Kate and which is named Molly?', first: 'Click on Kate', second: 'Click on Molly', title: 'Kate vs. Molly', firstName: 'Kate', secondName: 'Molly' },
   { question: 'Which shape is named Tucker and which is named Ben?', first: 'Click on Tucker', second: 'Click on Ben', title: 'Tucker vs. Ben', firstName: 'Tucker', secondName: 'Ben' },
-  { question: 'Which shape is named Kira and which is named Gunner?', first: 'Click on Kira', second: 'Click on Gunner', title: 'Kira vs. Gunner', firstName: 'Kira', secondName: 'Gunner' }
+  { question: 'Which shape is named Kira and which is named Gunner?', first: 'Click on Kira', second: 'Click on Gunner', title: 'Kira vs. Gunner', firstName: 'Kira', secondName: 'Gunner' },
+  { question: 'Click to see your results', first: '', second: '', title: '', firstName: '', secondName: '' }
 ];
 
 function resetQuiz () {
-  // eslint-disable-next-line no-undef
   location.reload();
 }
 
 function setup() {
   createCanvas(600, 650);
   textFont('Lato');
-  textSize(16);
+  textSize(18);
   textAlign(CENTER);
   fill(255);
   leftShape = new Left();
   rightShape = new Right();
   startButton = createButton('Start');
   startButton.size(150, 30);
-  startButton.position((width / 2) - (startButton.width / 2), 500);
+  startButton.position((width / 2) - (startButton.width / 2), 550);
   startButton.mousePressed(startQuiz);
   resetButton = createButton('Reset Quiz');
   resetButton.size(100, 30);
   resetButton.mousePressed(resetQuiz);
-  resetButton.position((width / 2) - (resetButton.width / 2), 550);
+  resetButton.position((width / 2) - (resetButton.width / 2), 600);
 }
 function draw() {
   background('#222');
@@ -66,7 +66,7 @@ function draw() {
   }
   if (quizState.state === 3) {
     text("Complete! You answered:", (width / 2), 25);
-    text(responseArray, 50, 50, 500, width - 50)
+    text(responseArray.join(' '), 50, 50, 500, width - 50)
     // end quizState question and quizState response loop
     // indicate that quiz is complete
     // show all results in responseArray 
@@ -102,7 +102,7 @@ function recordResponses(shape) {
   if (quizState.state === 2) {
     order = 'secondName';
   }
-  responseArray.push(shapeQuiz[quizState.currentQuestionIndex].title + ':' + "\n" + shapeQuiz[quizState.currentQuestionIndex][order] + ' as the ' + shape.name + "\n");
+  responseArray.push(shapeQuiz[quizState.currentQuestionIndex][order] + ' as the ' + shape.name + "\n");
 
   if (shapeQuiz[quizState.currentQuestionIndex + 1] !== undefined) {
     if (order === 'firstName') {
