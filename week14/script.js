@@ -5,33 +5,35 @@ var quizState = {
 var responseArray = []; // answers recorded here
 var leftShape;
 var rightShape;
-var leftColor = 'red';
-var rightColor = 'pink';
+var leftColor = '#e83f07';
+var rightColor = '#e83f07';
 
 let startButton;
 let resetButton;
 
-let shapeQuiz = [
-  {question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba', title: 'Kiki vs. Bouba'},
-  {question: 'Which shape is called takete and which is called maluma?', first: 'Click on takete', second: 'Click on maluma', title: 'Takete vs. Maluma'},
-  {question: 'Which shape is called kitiki and which is called lomba?', first: 'Click on kitiki', second: 'Click on lomba', title: 'Kitiki vs. Lomba'},
-  {question: 'Which shape is called piki and which is called nooma?', first: 'Click on piki', second: 'Click on nooma', title: 'Piki vs. Nooma'},
-  {question: 'Which shape is named Kate and which is named Molly?', first: 'Click on Kate', second: 'Click on Molly', title: 'Kate vs. Molly' },
-  {question: 'Which shape is named Tucker and which is named Ben?', first: 'Click on Tucker', second: 'Click on Ben', title: 'Tucker vs. Ben'},
-  {question: 'Which shape is named Kira and which is named Gunner?', first: 'Click on Kira', second: 'Click on Gunner', title: 'Kira vs. Gunner'}
+const shapeQuiz = [
+  { question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba', title: 'Kiki vs. Bouba', firstName: 'kiki', secondName: 'bouba' },
+  { question: 'Which shape is called takete and which is called maluma?', first: 'Click on takete', second: 'Click on maluma', title: 'Takete vs. Maluma', firstName: 'takete', secondName: 'maluma' },
+  { question: 'Which shape is called kitiki and which is called lomba?', first: 'Click on kitiki', second: 'Click on lomba', title: 'Kitiki vs. Lomba', firstName: 'kitiki', secondName: 'lomba' },
+  { question: 'Which shape is called piki and which is called nooma?', first: 'Click on piki', second: 'Click on nooma', title: 'Piki vs. Nooma', firstName: 'piki', secondName: 'nooma' },
+  { question: 'Which shape is named Kate and which is named Molly?', first: 'Click on Kate', second: 'Click on Molly', title: 'Kate vs. Molly', firstName: 'Kate', secondName: 'Molly' },
+  { question: 'Which shape is named Tucker and which is named Ben?', first: 'Click on Tucker', second: 'Click on Ben', title: 'Tucker vs. Ben', firstName: 'Tucker', secondName: 'Ben' },
+  { question: 'Which shape is named Kira and which is named Gunner?', first: 'Click on Kira', second: 'Click on Gunner', title: 'Kira vs. Gunner', firstName: 'Kira', secondName: 'Gunner' }
 ];
 
 function resetQuiz () {
+  // eslint-disable-next-line no-undef
   location.reload();
-  return;
 }
+
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(600, 650);
   textFont('Lato');
   textSize(16);
   textAlign(CENTER);
-  leftShape = new Left('kiki');
-  rightShape = new Right('bouba');
+  fill(255);
+  leftShape = new Left();
+  rightShape = new Right();
   startButton = createButton('Start');
   startButton.size(150, 30);
   startButton.position((width / 2) - (startButton.width / 2), 500);
@@ -42,10 +44,10 @@ function setup() {
   resetButton.position((width / 2) - (resetButton.width / 2), 550);
 }
 function draw() {
-  background(200);
+  background('#222');
   // first state: after initialization, show the shapes and the quiz question
   if (quizState.state > 0 && quizState.state < 3) {
-      // left
+    // left
     leftShape.show(leftColor);
     // right
     rightShape.show(rightColor);
@@ -53,21 +55,23 @@ function draw() {
   }
   if (quizState.state === 1) {
     text(shapeQuiz[quizState.currentQuestionIndex].first, 0, 450, width, 400)
+    console.log('first click', quizState.state)
   }
   if (quizState.state === 2) {
-    console.log(shapeQuiz[quizState.currentQuestionIndex].second);
     text(shapeQuiz[quizState.currentQuestionIndex].second, 0, 450, width, 400)
+    console.log('second click', quizState.state);
 
     // add answers for first and second command to responseArray (make the submitButton an event Handler
     // return to quizState question with next idx in shapeQuiz array
   }
   if (quizState.state === 3) {
-    text("Complete!", (width / 2), 25);
-    text(responseArray.join(','), 50, 50, 500, width - 50)
+    text("Complete! You answered:", (width / 2), 25);
+    text(responseArray, 50, 50, 500, width - 50)
     // end quizState question and quizState response loop
     // indicate that quiz is complete
     // show all results in responseArray 
-    console.log('quiz state 3');
+    // join(',')
+    console.log('state = 3', quizState.state);
   }
 }
 function startQuiz() {
@@ -77,15 +81,15 @@ function startQuiz() {
 function mousePressed() {
   if ((mouseX > 25 && mouseX < 250 && mouseY > 50 && mouseY < 300) && quizState.state > 0) {
     recordResponses(leftShape);
-    leftColor = 'blue';
+    leftColor = '#669eed';
   } else {
-    leftColor = 'red';
+    leftColor = '#e83f07';
   }
   if ((mouseX > 305 && mouseX < 525 && mouseY > 65 && mouseY < 300) && quizState.state > 0) {
     recordResponses(rightShape);
-    rightColor = 'green';
+    rightColor = '#669eed';
   } else {
-    rightColor = 'pink';
+    rightColor = '#e83f07';
   }
 }
 
@@ -93,18 +97,17 @@ function recordResponses(shape) {
   // to push responses into responseArray
   let order;
   if (quizState.state === 1) {
-    order = 'first';
+    order = 'firstName';
   }
   if (quizState.state === 2) {
-    order = 'second';
-    console.log('order is second');
+    order = 'secondName';
   }
-  responseArray.push(shapeQuiz[quizState.currentQuestionIndex].title + ':' + 'you chose' + shapeQuiz[quizState.currentQuestionIndex][order] + shape.name);
+  responseArray.push(shapeQuiz[quizState.currentQuestionIndex].title + ':' + "\n" + shapeQuiz[quizState.currentQuestionIndex][order] + ' as the ' + shape.name + "\n");
 
   if (shapeQuiz[quizState.currentQuestionIndex + 1] !== undefined) {
-    if (order === 'first') {
+    if (order === 'firstName') {
       quizState.state = 2;
-    } else if (order === 'second') {
+    } else if (order === 'secondName') {
       quizState.currentQuestionIndex++;
       quizState.state = 1;
     }
@@ -115,13 +118,13 @@ function recordResponses(shape) {
 
 class Left {
   constructor() {
-    this.color = 'red';
-    this.name = 'a spiky shape';
+    this.color = '#e83f07';
+    this.name = 'angular shape';
   }
   show(myColor) {
-    // console.log(this.color);
     push();
     fill(myColor);
+    strokeWeight(0);
     beginShape();
     vertex(80, 80);
     vertex(130, 122);
@@ -144,13 +147,13 @@ class Left {
 
 class Right {
   constructor() {
-    this.color = 'pink';
-    this.name = 'a round shape';
+    this.color = '#e83f07';
+    this.name = 'round shape';
   }
   show(myColor) {
-    // console.log(this.color);
     push();
     fill(myColor);
+    strokeWeight(0);
     beginShape();
     curveVertex(362, 145); //
     curveVertex(362, 145); //
