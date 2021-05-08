@@ -53,6 +53,7 @@ function setup() {
   startOverButton.position(250, 50);
 }
 function draw() {
+  console.log('working?');
   background(200);
   // first state: after initialization, show the shapes and the quiz question
   if (quizState.state > 0 && quizState.state < 3) {
@@ -84,13 +85,13 @@ function startQuiz() {
 
 function mousePressed() {
   if ((mouseX > 25 && mouseX < 250 && mouseY > 50 && mouseY < 300) && quizState.state > 0) {
-    responseArray(leftShape);
+    recordResponses(leftShape);
     leftColor = 'blue';
   } else {
     leftColor = 'red';
   }
   if ((mouseX > 305 && mouseX < 525 && mouseY > 65 && mouseY < 300) && quizState.state > 0) {
-    responseArray(rightShape);
+    recordResponses(rightShape);
     rightColor = 'green';
   } else {
     rightColor = 'pink';
@@ -101,12 +102,12 @@ function recordResponses(shape) {
   // to push responses into responseArray
   let order;
   if (quizState.state === 1) {
-    order = 'first'; 
+    order = 'first';
   }
   if (quizState.state === 2) {
     order = 'second';
   }
-  responseArray.push('For ' + shapeQuiz[quizState.currentQuestionIndex].title + ', you chose' + shapeQuiz[quizState.currentquestionIndex][order]);
+  responseArray.push('For ' + shapeQuiz[quizState.currentQuestionIndex].title + ', you chose' + shapeQuiz[quizState.currentquestionIndex][order] + shape.name);
 
   if (shapeQuiz[quizState.currentQuestionIndex + 1] !== undefined) {
     if (order === 'first') {
@@ -121,9 +122,9 @@ function recordResponses(shape) {
 }
 
 class Left {
-  constructor(left) {
+  constructor() {
     this.color = 'red';
-    this.name = left;
+    this.name = 'a spiky shape';
   }
   show(myColor) {
     console.log(this.color);
@@ -150,9 +151,9 @@ class Left {
 }
 
 class Right {
-  constructor(right) {
+  constructor() {
     this.color = 'pink';
-    this.name = right;
+    this.name = 'a round shape';
   }
   show(myColor) {
     console.log(this.color);
