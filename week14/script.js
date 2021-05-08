@@ -4,7 +4,9 @@ var quizState = {
 }
 var responseArray = []; // answers recorded here
 var leftShape;
+// var leftNames = ['kiki', 'takete', 'kitiki', 'piki', 'Kate', 'Tucker', 'Kira'];
 var rightShape;
+// var rightNames = ['bouba', 'maluma', 'lomba', 'nooma', 'Molly', 'Ben', 'Gunner']
 var leftColor = 'red';
 var rightColor = 'pink';
 
@@ -37,8 +39,8 @@ function setup() {
   textFont('Lato');
   textSize(16);
   textAlign(CENTER);
-  leftShape = new Left();
-  rightShape = new Right();
+  leftShape = new Left('kiki');
+  rightShape = new Right('bouba');
   startButton = createButton('Start');
   startButton.position((width / 2) - (startButton.width / 2), height / 2 - (startButton.height / 2));
   startButton.mousePressed(startQuiz);
@@ -111,7 +113,7 @@ function recordResponses(shape) {
       quizState.state = 2;
     } else if (order === 'second') {
       quizState.currentQuestionIndex++;
-      quizState.state = 1; //
+      quizState.state = 1; 
     }
   } else {
     quizState.state = 3; // no more questions in Array, move to show responses
