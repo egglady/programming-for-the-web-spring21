@@ -4,33 +4,24 @@ var quizState = {
 }
 var responseArray = []; // answers recorded here
 var leftShape;
-// var leftNames = ['kiki', 'takete', 'kitiki', 'piki', 'Kate', 'Tucker', 'Kira'];
 var rightShape;
-// var rightNames = ['bouba', 'maluma', 'lomba', 'nooma', 'Molly', 'Ben', 'Gunner']
 var leftColor = 'red';
 var rightColor = 'pink';
 
 let startButton;
-let submitAnswerButton;
-let startOverButton;
+let resetButton;
 
 let shapeQuiz = [
   {question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba', title: 'Kiki vs. Bouba'},
   {question: 'Which shape is called takete and which is called maluma?', first: 'Click on takete', second: 'Click on maluma', title: 'Takete vs. Maluma'},
-  {question: 'Which shape is called kitiki and which is called lomba?', first: 'Click on kitki', second: 'Click on lomba', title: 'Kitiki vs. Lomba'},
+  {question: 'Which shape is called kitiki and which is called lomba?', first: 'Click on kitiki', second: 'Click on lomba', title: 'Kitiki vs. Lomba'},
   {question: 'Which shape is called piki and which is called nooma?', first: 'Click on piki', second: 'Click on nooma', title: 'Piki vs. Nooma'},
   {question: 'Which shape is named Kate and which is named Molly?', first: 'Click on Kate', second: 'Click on Molly', title: 'Kate vs. Molly' },
   {question: 'Which shape is named Tucker and which is named Ben?', first: 'Click on Tucker', second: 'Click on Ben', title: 'Tucker vs. Ben'},
   {question: 'Which shape is named Kira and which is named Gunner?', first: 'Click on Kira', second: 'Click on Gunner', title: 'Kira vs. Gunner'}
 ];
 
-function next () {
-  if (shapeQuiz.length < 1) {
-    location.reload;
-    return;
-  }
-}
-function startOver () {
+function resetQuiz () {
   location.reload();
   return;
 }
@@ -42,18 +33,15 @@ function setup() {
   leftShape = new Left('kiki');
   rightShape = new Right('bouba');
   startButton = createButton('Start');
-  startButton.position((width / 2) - (startButton.width / 2), height / 2 - (startButton.height / 2));
+  startButton.size(150, 30);
+  startButton.position((width / 2) - (startButton.width / 2), 500);
   startButton.mousePressed(startQuiz);
-  submitAnswerButton = createButton('Submit');
-  submitAnswerButton.size(150, 30);
-  submitAnswerButton.position((width / 2) - (submitAnswerButton.width / 2), 600);
-  startOverButton = createButton('Start Over');
-  startOverButton.size(150, 30);
-  startOverButton.mousePressed(startOver);
-  startOverButton.position(250, 50);
+  resetButton = createButton('Reset Quiz');
+  resetButton.size(100, 30);
+  resetButton.mousePressed(resetQuiz);
+  resetButton.position((width / 2) - (resetButton.width / 2), 550);
 }
 function draw() {
-  console.log('working?');
   background(200);
   // first state: after initialization, show the shapes and the quiz question
   if (quizState.state > 0 && quizState.state < 3) {
@@ -66,17 +54,20 @@ function draw() {
   if (quizState.state === 1) {
     text(shapeQuiz[quizState.currentQuestionIndex].first, 0, 450, width, 400)
   }
-  if (quizState === 2) {
-    text(shapeQuiz[quizState.currentQuestionIndex].second, 0, 300, width, 400)
+  if (quizState.state === 2) {
+    console.log(shapeQuiz[quizState.currentQuestionIndex].second);
+    text(shapeQuiz[quizState.currentQuestionIndex].second, 0, 450, width, 400)
+
     // add answers for first and second command to responseArray (make the submitButton an event Handler
     // return to quizState question with next idx in shapeQuiz array
   }
-  if (quizState === 3) {
-    text("Complete!", 10, 10);
-    text(responseArray.join(','), 50, 50, 100, width - 50)
+  if (quizState.state === 3) {
+    text("Complete!", (width / 2), 25);
+    text(responseArray.join(','), 50, 50, 500, width - 50)
     // end quizState question and quizState response loop
     // indicate that quiz is complete
     // show all results in responseArray 
+    console.log('quiz state 3');
   }
 }
 function startQuiz() {
@@ -106,15 +97,16 @@ function recordResponses(shape) {
   }
   if (quizState.state === 2) {
     order = 'second';
+    console.log('order is second');
   }
-  responseArray.push('For ' + shapeQuiz[quizState.currentQuestionIndex].title + ', you chose' + shapeQuiz[quizState.currentquestionIndex][order] + shape.name);
+  responseArray.push(shapeQuiz[quizState.currentQuestionIndex].title + ':' + 'you chose' + shapeQuiz[quizState.currentQuestionIndex][order] + shape.name);
 
   if (shapeQuiz[quizState.currentQuestionIndex + 1] !== undefined) {
     if (order === 'first') {
       quizState.state = 2;
     } else if (order === 'second') {
       quizState.currentQuestionIndex++;
-      quizState.state = 1; 
+      quizState.state = 1;
     }
   } else {
     quizState.state = 3; // no more questions in Array, move to show responses
@@ -127,7 +119,7 @@ class Left {
     this.name = 'a spiky shape';
   }
   show(myColor) {
-    console.log(this.color);
+    // console.log(this.color);
     push();
     fill(myColor);
     beginShape();
@@ -156,7 +148,7 @@ class Right {
     this.name = 'a round shape';
   }
   show(myColor) {
-    console.log(this.color);
+    // console.log(this.color);
     push();
     fill(myColor);
     beginShape();
