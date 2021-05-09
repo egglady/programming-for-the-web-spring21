@@ -3,8 +3,8 @@ var quizState = {
   currentQuestionIndex: 0
 }
 var responseArray = []; // answers recorded here
-var leftShape;
-var rightShape;
+var leftShape; // for class Left
+var rightShape; // for class Right
 var leftColor = '#e83f07';
 var rightColor = '#e83f07';
 
@@ -90,7 +90,6 @@ function draw () {
 function startQuiz () {
   quizState.state = 1; // moves to question state
 }
-
 function mousePressed () {
   if ((mouseX > 25 && mouseX < 250 && mouseY > 50 && mouseY < 300) && quizState.state > 0) {
     recordResponses(leftShape);
@@ -105,7 +104,6 @@ function mousePressed () {
     rightColor = '#e83f07'; // red
   }
 }
-
 function recordResponses (shape) {
   // to push responses into responseArray
   let order;
