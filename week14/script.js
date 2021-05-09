@@ -10,6 +10,21 @@ var rightColor = '#e83f07';
 
 let startButton;
 let resetButton;
+// for making the buttons responsive
+let myCircle = {
+  xPercent: 0.33, // 33%
+  yPercent: 0.5, // 50%
+  widthPercent: 0.25,
+  heightPercent: 0.25,
+};
+// for making the buttons responsive
+let miniState = {
+  // 0 intro -- show button
+  // 1 quiz -- button is hidden off screen
+  phase: 0,
+};
+
+
 
 const shapeQuiz = [
   { question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba', title: 'Kiki vs. Bouba', firstName: 'kiki', secondName: 'bouba' },
@@ -35,15 +50,19 @@ function setup() {
   rightShape = new Right();
   startButton = createButton('Start');
   startButton.size(150, 30);
-  startButton.position((width / 2) - (startButton.width / 2), 550);
+  startButton.position((width / 2 - startButton.width / 2 - 50), 550);
   startButton.mousePressed(startQuiz);
   resetButton = createButton('Reset Quiz');
   resetButton.size(100, 30);
   resetButton.mousePressed(resetQuiz);
-  resetButton.position((width / 2) - (resetButton.width / 2), 600);
+  resetButton.position((width / 2 - resetButton.width / 2 - 50), 600);
 }
 function draw() {
   background('#222');
+  // for responsive buttons
+  if(miniState.phase !== 0) {
+    circle(width * myCircle.xPercent, 550, width * myCircle.widthPercent, 550)
+  }
   // first state: after initialization, show the shapes and the quiz question
   if (quizState.state > 0 && quizState.state < 3) {
     // left
@@ -111,6 +130,16 @@ function recordResponses(shape) {
     quizState.state = 3; // no more questions in Array, move to show responses
   }
 }
+
+// for responsive buttons
+function windowResized() {
+  resizeCanvas(windowWidth / 2, 650);
+  if (miniState.phase === 0) {
+    startButton.position(width / 2 - (startButton.width / 2), 550);
+    resetButton.position(width /2 - resetButton.width / 2, 600);
+  }
+}
+
 
 class Left {
   constructor() {
