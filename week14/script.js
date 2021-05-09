@@ -25,11 +25,10 @@ const shapeQuiz = [
 function resetQuiz () {
   location.reload();
 }
-
 function setup() {
   createCanvas(600, 650);
   textFont('Lato');
-  textSize(18);
+  textSize(16);
   textAlign(CENTER);
   fill(255);
   leftShape = new Left();
@@ -53,14 +52,13 @@ function draw() {
     rightShape.show(rightColor);
     text(shapeQuiz[quizState.currentQuestionIndex].question, 0, 400, width, 300)
   }
-  if (quizState.state === 1) {
+  if (quizState.state === 1) { // first "Click on"
     text(shapeQuiz[quizState.currentQuestionIndex].first, 0, 450, width, 400)
     console.log('first click', quizState.state)
   }
-  if (quizState.state === 2) {
+  if (quizState.state === 2) { // second "Click on"
     text(shapeQuiz[quizState.currentQuestionIndex].second, 0, 450, width, 400)
     console.log('second click', quizState.state);
-
     // add answers for first and second command to responseArray (make the submitButton an event Handler
     // return to quizState question with next idx in shapeQuiz array
   }
@@ -69,8 +67,7 @@ function draw() {
     text(responseArray.join(' '), 50, 50, 500, width - 50)
     // end quizState question and quizState response loop
     // indicate that quiz is complete
-    // show all results in responseArray 
-    // join(',')
+    // show all results in responseArray
     console.log('state = 3', quizState.state);
   }
 }
@@ -81,15 +78,15 @@ function startQuiz() {
 function mousePressed() {
   if ((mouseX > 25 && mouseX < 250 && mouseY > 50 && mouseY < 300) && quizState.state > 0) {
     recordResponses(leftShape);
-    leftColor = '#669eed';
+    leftColor = '#669eed'; // blue if clicked
   } else {
-    leftColor = '#e83f07';
+    leftColor = '#e83f07'; // red
   }
   if ((mouseX > 305 && mouseX < 525 && mouseY > 65 && mouseY < 300) && quizState.state > 0) {
     recordResponses(rightShape);
-    rightColor = '#669eed';
+    rightColor = '#669eed'; // blue if clicked
   } else {
-    rightColor = '#e83f07';
+    rightColor = '#e83f07'; // red
   }
 }
 
@@ -102,14 +99,13 @@ function recordResponses(shape) {
   if (quizState.state === 2) {
     order = 'secondName';
   }
-  responseArray.push(shapeQuiz[quizState.currentQuestionIndex][order] + ' as the ' + shape.name + "\n");
-
+  responseArray.push(shapeQuiz[quizState.currentQuestionIndex][order] + ' as the ' + shape.name + ' in ' + shapeQuiz[quizState.currentQuestionIndex].title + "\n" + "\n");
   if (shapeQuiz[quizState.currentQuestionIndex + 1] !== undefined) {
     if (order === 'firstName') {
       quizState.state = 2;
     } else if (order === 'secondName') {
-      quizState.currentQuestionIndex++;
-      quizState.state = 1;
+      quizState.currentQuestionIndex++; // increment the quiz state
+      quizState.state = 1; // return back to first Click on of next question
     }
   } else {
     quizState.state = 3; // no more questions in Array, move to show responses
