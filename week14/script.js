@@ -11,21 +11,18 @@ var rightColor = '#e83f07';
 let startButton;
 let resetButton;
 // for making the buttons responsive
-let myCircle = {
+const buttonCircle = {
   xPercent: 0.33, // 33%
   yPercent: 0.5, // 50%
   widthPercent: 0.25,
-  heightPercent: 0.25,
+  heightPercent: 0.25
 };
 // for making the buttons responsive
-let miniState = {
+const buttonState = {
   // 0 intro -- show button
   // 1 quiz -- button is hidden off screen
-  phase: 0,
+  phase: 0
 };
-
-
-
 const shapeQuiz = [
   { question: 'Which shape is called kiki and which is called bouba?', first: 'Click on kiki', second: 'Click on bouba', title: 'Kiki vs. Bouba', firstName: 'kiki', secondName: 'bouba' },
   { question: 'Which shape is called takete and which is called maluma?', first: 'Click on takete', second: 'Click on maluma', title: 'Takete vs. Maluma', firstName: 'takete', secondName: 'maluma' },
@@ -57,11 +54,11 @@ function setup() {
   resetButton.mousePressed(resetQuiz);
   resetButton.position((width / 2 - resetButton.width / 2 - 20), 600);
 }
-function draw() {
+function draw () {
   background('#222');
   // for responsive buttons
-  if(miniState.phase !== 0) {
-    circle(width * myCircle.xPercent, 550, width * myCircle.widthPercent, 550)
+  if(buttonState.phase !== 0) {
+    circle(width * buttonCircle.xPercent, 550, width * buttonCircle.widthPercent, 550)
   }
   // first state: after initialization, show the shapes and the quiz question
   if (quizState.state > 0 && quizState.state < 3) {
@@ -82,7 +79,7 @@ function draw() {
     // return to quizState question with next idx in shapeQuiz array
   }
   if (quizState.state === 3) {
-    text("Complete! You answered:", (width / 2), 50);
+    text('Complete! You answered:', (width / 2), 50);
     text(responseArray.join(' '), (width / 2), 100)
     // text(responseArray.join(' '), 50, 50, 500, width - 50)
     // end quizState question and quizState response loop
@@ -91,11 +88,11 @@ function draw() {
     console.log('state = 3', quizState.state);
   }
 }
-function startQuiz() {
+function startQuiz () {
   quizState.state = 1; // moves to question state
 }
 
-function mousePressed() {
+function mousePressed () {
   if ((mouseX > 25 && mouseX < 250 && mouseY > 50 && mouseY < 300) && quizState.state > 0) {
     recordResponses(leftShape);
     leftColor = '#669eed'; // blue if clicked
@@ -110,7 +107,7 @@ function mousePressed() {
   }
 }
 
-function recordResponses(shape) {
+function recordResponses (shape) {
   // to push responses into responseArray
   let order;
   if (quizState.state === 1) {
@@ -119,7 +116,7 @@ function recordResponses(shape) {
   if (quizState.state === 2) {
     order = 'secondName';
   }
-  responseArray.push(shapeQuiz[quizState.currentQuestionIndex][order] + ' as the ' + shape.name + ' in ' + shapeQuiz[quizState.currentQuestionIndex].title + "\n" + "\n");
+  responseArray.push(shapeQuiz[quizState.currentQuestionIndex][order] + ' as the ' + shape.name + ' in ' + shapeQuiz[quizState.currentQuestionIndex].title + '\n' + '\n');
   if (shapeQuiz[quizState.currentQuestionIndex + 1] !== undefined) {
     if (order === 'firstName') {
       quizState.state = 2;
@@ -131,23 +128,20 @@ function recordResponses(shape) {
     quizState.state = 3; // no more questions in Array, move to show responses
   }
 }
-
 // for responsive buttons
-function windowResized() {
+function windowResized () {
   resizeCanvas(windowWidth / 2, 650);
-  if (miniState.phase === 0) {
+  if (buttonState.phase === 0) {
     startButton.position((width / 2 - startButton.width / 2 - 20), 550);
     resetButton.position((width /2 - resetButton.width / 2 - 20), 600);
   }
 }
-
-
 class Left {
-  constructor() {
+  constructor () {
     this.color = '#e83f07';
     this.name = 'angular shape';
   }
-  show(myColor) {
+  show (myColor) {
     push();
     fill(myColor);
     strokeWeight(0);
@@ -170,18 +164,17 @@ class Left {
     pop();
   }
 }
-
 class Right {
   constructor() {
     this.color = '#e83f07';
     this.name = 'round shape';
   }
-  show(myColor) {
+  show (myColor) {
     push();
     fill(myColor);
     strokeWeight(0);
     beginShape();
-    curveVertex(362, 145); //
+    curveVertex(362, 145); // comment = outer edge of curve
     curveVertex(362, 145); //
     curveVertex(370, 70);
     curveVertex(395, 65);
