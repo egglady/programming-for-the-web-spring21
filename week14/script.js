@@ -75,13 +75,12 @@ function draw () {
   if (quizState.state === 2) { // second "Click on"
     text(shapeQuiz[quizState.currentQuestionIndex].second, 0, 450, width, 400)
     console.log('second click', quizState.state);
-    // add answers for first and second command to responseArray (make the submitButton an event Handler
+    // add answers for first and second command to responseArray
     // return to quizState question with next idx in shapeQuiz array
   }
   if (quizState.state === 3) {
     text('Complete! You answered:', (width / 2), 50);
-    text(responseArray.join(' '), (width / 2), 100)
-    // text(responseArray.join(' '), 50, 50, 500, width - 50)
+    text(responseArray.join(' '), (width / 2), 102)
     // end quizState question and quizState response loop
     // indicate that quiz is complete
     // show all results in responseArray
