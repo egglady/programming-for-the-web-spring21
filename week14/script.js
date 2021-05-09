@@ -50,12 +50,12 @@ function setup() {
   rightShape = new Right();
   startButton = createButton('Start');
   startButton.size(150, 30);
-  startButton.position((width / 2 - startButton.width / 2 - 50), 550);
+  startButton.position((width / 2 - startButton.width / 2 - 20), 550);
   startButton.mousePressed(startQuiz);
   resetButton = createButton('Reset Quiz');
   resetButton.size(100, 30);
   resetButton.mousePressed(resetQuiz);
-  resetButton.position((width / 2 - resetButton.width / 2 - 50), 600);
+  resetButton.position((width / 2 - resetButton.width / 2 - 20), 600);
 }
 function draw() {
   background('#222');
@@ -82,8 +82,9 @@ function draw() {
     // return to quizState question with next idx in shapeQuiz array
   }
   if (quizState.state === 3) {
-    text("Complete! You answered:", (width / 2), 25);
-    text(responseArray.join(' '), 50, 50, 500, width - 50)
+    text("Complete! You answered:", (width / 2), 50);
+    text(responseArray.join(' '), (width / 2), 100)
+    // text(responseArray.join(' '), 50, 50, 500, width - 50)
     // end quizState question and quizState response loop
     // indicate that quiz is complete
     // show all results in responseArray
@@ -135,8 +136,8 @@ function recordResponses(shape) {
 function windowResized() {
   resizeCanvas(windowWidth / 2, 650);
   if (miniState.phase === 0) {
-    startButton.position(width / 2 - (startButton.width / 2), 550);
-    resetButton.position(width /2 - resetButton.width / 2, 600);
+    startButton.position((width / 2 - startButton.width / 2 - 20), 550);
+    resetButton.position((width /2 - resetButton.width / 2 - 20), 600);
   }
 }
 
